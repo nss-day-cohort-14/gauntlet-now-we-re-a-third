@@ -8,9 +8,11 @@ warrior.generateClass();  // This will be used for "Surprise me" option
 console.log(warrior.toString());
 
 var orc = new Gauntlet.Combatants.Orc();
-orc.generateClass();
+orc.class = new Gauntlet.GuildHall.Shaman();
 orc.setWeapon(new BroadSword());
 console.log(orc.toString());
+
+console.log("orc", orc);
 
 /*
   Test code to generate a spell
@@ -34,6 +36,9 @@ $(document).ready(function() {
     var moveAlong = false;
 
     switch (nextCard) {
+      case "card--race":
+        moveAlong = ($("#player-name").val() !== "");
+        break;
       case "card--class":
         moveAlong = ($("#player-name").val() !== "");
         break;
