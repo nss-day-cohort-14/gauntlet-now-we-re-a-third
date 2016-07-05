@@ -1,0 +1,34 @@
+{
+  "name": "gauntlet-now-we-re-a-third",
+  "version": "1.0.0",
+  "description": "Time to use protypal inheritance to build a game.",
+  "main": "javascripts/app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nss-day-cohort-14/gauntlet-now-we-re-a-third.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/nss-day-cohort-14/gauntlet-now-we-re-a-third/issues"
+  },
+  "homepage": "https://github.com/nss-day-cohort-14/gauntlet-now-we-re-a-third#readme",
+  "devDependencies": {
+    "browserify": "^13.0.1",
+    "gulp": "^3.9.1",
+    "gulp-jasmine": "^2.4.0",
+    "gulp-jshint": "^2.0.1",
+    "gulp-sourcemaps": "^1.6.0",
+    "gulp-watch": "^4.3.8",
+    "jasmine-spec-reporter": "^2.5.0",
+    "jshint": "^2.9.2",
+    "jshint-stylish": "^2.2.0",
+    "underscore": "^1.8.3",
+    "vinyl-buffer": "^1.0.0",
+    "vinyl-source-stream": "^1.1.0",
+    "watchify": "^3.7.0"
+  }
+}
