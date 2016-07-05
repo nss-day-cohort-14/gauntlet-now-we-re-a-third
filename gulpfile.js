@@ -91,6 +91,7 @@ gulp.task('lint', function() {
  */
 gulp.task('watch', function() {
   // Run the link task when any JavaScript file changes
+
   gulp.watch(['./javascripts/**/*.js'], ['lint'/*,'specs'*/]);
 
   gutil.log(gutil.colors.bgGreen('Watching for changes...'));
@@ -98,3 +99,4 @@ gulp.task('watch', function() {
 
 // This task runs when you type `gulp` in the CLI
 gulp.task('default', ['lint', /*'specs',*/ 'watch'], bundle);
+
