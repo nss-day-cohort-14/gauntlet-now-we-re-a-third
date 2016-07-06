@@ -6,6 +6,7 @@ const Weapons = require('./weapons');
 const Spells = require('./spells');
 const Selectors = require('./selectors.js');
 const buildDom = require('./domBuild.js');
+var $ = require('jquery');
 
 // console.log("Gauntlet", Gauntlet);
 // console.log("Classes", Classes);
@@ -81,6 +82,8 @@ $(document).ready(function() {
     Gauntlet.player1.name = $('#player-name').val();
   });
 
-  $('.race').on('click', Selectors.chooseClass);
+  $('.race').on('click', Selectors.chooseRace);
+
+  $(document).on('click', '.playerClass', Selectors.chooseClass);
 
 });
