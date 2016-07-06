@@ -1,24 +1,36 @@
 'use strict';
+const Gauntlet = require('./player');
+const Enemies = require('./enemies');
+const Classes = require('./classes');
+const Weapons = require('./weapons');
+const Spells = require('./spells');
+
+
+console.log("Gauntlet", Gauntlet);
+console.log("Classes", Classes);
+console.log("Weapons", Weapons);
+console.log("Spells", Spells);
 /*
   Test code to generate a human player and an orc player
- */
-var warrior = new Gauntlet.Combatants.Human();
-warrior.setWeapon(new WarAxe());
+*/
+var warrior = new Gauntlet.Combatants.Human('John');
+warrior.setWeapon(new Weapons.WarAxe());
 warrior.generateClass();  // This will be used for "Surprise me" option
 console.log(warrior.toString());
 
-var orc = new Gauntlet.Combatants.Orc();
-orc.class = new Gauntlet.GuildHall.Shaman();
-orc.setWeapon(new BroadSword());
+var orc = new Gauntlet.Combatants.Orc('Winston');
+orc.class = new Classes.GuildHall.Shaman();
+orc.setWeapon(new Spells.SpellBook.Sphere());
 console.log(orc.toString());
 
 console.log("orc", orc);
+console.log("human", warrior);
 
 /*
   Test code to generate a spell
  */
-var spell = new Gauntlet.SpellBook.Sphere();
-console.log("spell: ", spell.toString());
+var spell = new Spells.SpellBook.Sphere();
+console.log("Spell: ", spell.toString());
 
 
 $(document).ready(function() {
@@ -62,4 +74,9 @@ $(document).ready(function() {
     $("." + previousCard).show();
   });
 
+  $('.race__link').on('click', (e) => {
+    console.log("data", e.target.textContent);
+  });
+
 });
+

@@ -6,7 +6,7 @@ var Weapon = function() {
 
   this.toString = function() {
     return this.name;
-  }
+  };
 };
 
 var Dagger = function() {
@@ -30,3 +30,4 @@ var WarAxe = function() {
 };
 WarAxe.prototype = new Weapon();
 
+module.exports = {Dagger, BroadSword, WarAxe};

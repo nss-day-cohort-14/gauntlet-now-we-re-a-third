@@ -1,14 +1,16 @@
 'use strict';
+// this is required to run generateClass();
+const Classes = require('./classes');
 /*
   TODO: Modularize this code with IIFE or Browserify
- */
+*/
 var Gauntlet = Gauntlet || {};
 Gauntlet.Combatants = {};
 
 /*
   Define the base object for any player of Gauntlet,
   whether a human player or a monster.
- */
+*/
 Gauntlet.Combatants.Player = function(name) {
   this.species = null;
   this.class = null;
@@ -43,11 +45,11 @@ Gauntlet.Combatants.Player = function(name) {
 
 Gauntlet.Combatants.Player.prototype.setWeapon = function(newWeapon) {
   this.weapon = newWeapon;
-}
+};
 
 Gauntlet.Combatants.Player.prototype.setSpell = function(newSpell) {
   this.spell = newSpell;
-}
+};
 
 Gauntlet.Combatants.Player.prototype.generateClass = function() {
   // Get a random index from the allowed classes array
@@ -57,7 +59,7 @@ Gauntlet.Combatants.Player.prototype.generateClass = function() {
   var randomClass = this.allowedClasses[random];
 
   // Composes the corresponding player class into the player object
-  this.class = new Gauntlet.GuildHall[randomClass]();
+  this.class = new Classes.GuildHall[randomClass]();
 
   // Add the health bonus
   this.health += this.class.healthBonus;
@@ -68,8 +70,9 @@ Gauntlet.Combatants.Player.prototype.generateClass = function() {
   Define the base properties for a human in a 
   constructor function.
  */
-Gauntlet.Combatants.Human = function() {
+Gauntlet.Combatants.Human = function(name) {
   var randomSkin;
+  this.playerName = name;
 
   this.species = "Human";
   this.intelligence = this.intelligence + 20;
@@ -87,7 +90,8 @@ Gauntlet.Combatants.Human.prototype = new Gauntlet.Combatants.Player();
   Define the base properties for a monster in a 
   constructor function.
  */
-Gauntlet.Combatants.Monster = function() {
+Gauntlet.Combatants.Monster = function(name) {
+  this.playerName = name;
   this.health = this.health - 30;
   this.intelligence = this.intelligence -20;
   this.strength = this.strength + 30;
@@ -95,3 +99,5 @@ Gauntlet.Combatants.Monster = function() {
 
 Gauntlet.Combatants.Monster.prototype = new Gauntlet.Combatants.Player();
 
+// export our base constructors for use
+module.exports = Gauntlet;
