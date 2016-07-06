@@ -33,6 +33,7 @@ Player.GuildHall.PlayerClass = function() {
 Player.GuildHall.Fighter = function() {
   this.healthBonus = 20;
   this.strengthBonus = 10;
+  this.weaponArray = ['Dagger', 'War Axe', 'Broadsword'];
 };
 Player.GuildHall.Fighter.prototype = new Player.GuildHall.PlayerClass();
 
@@ -82,6 +83,7 @@ Player.GuildHall.Mage = function() {
   this.healthBonus = this.healthBonus - 10;
   this.strengthBonus = this.strengthBonus - 20;
   this.intelligenceBonus = this.intelligenceBonus + 20;
+  this.spellArray = ['Sphere', 'Tome', 'Staff', 'Chicken'];
 };
 Player.GuildHall.Mage.prototype = new Player.GuildHall.PlayerClass();
 
@@ -130,4 +132,3 @@ module.exports = Player;
       - Ninja
       - Assassin
  */
-

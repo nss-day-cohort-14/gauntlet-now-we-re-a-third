@@ -86,4 +86,8 @@ $(document).ready(function() {
 
   $(document).on('click', '.playerClass', Selectors.chooseClass);
 
+  $(document).on('click', '.playerClass', Selectors.chooseWeapon);
+
+  // $(document).on('click')
+
 });
