@@ -27,7 +27,7 @@ Gauntlet.SpellBook.Spell = function() {
 Gauntlet.SpellBook.Sphere = function() {
   this.name = "sphere";
   this.damage = Math.floor(Math.random() * 10 + 10);
-  //module.export = Gauntlet;
+  // module.export = Gauntlet;
   var random = Math.round(Math.random() * (this.damageTypes.length - 1));
   this.type = this.damageTypes[random];
 };
@@ -52,7 +52,7 @@ Gauntlet.SpellBook.Staff = function() {
   this.type = this.damageTypes[random];
 };
 Gauntlet.SpellBook.Staff.prototype = new Gauntlet.SpellBook.Spell();
- 
+
 
 Gauntlet.SpellBook.Chicken = function() {
   this.name = "chicken";
