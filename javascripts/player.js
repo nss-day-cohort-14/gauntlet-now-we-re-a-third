@@ -7,6 +7,10 @@ const Classes = require('./classes');
 var Gauntlet = Gauntlet || {};
 Gauntlet.Combatants = {};
 
+Gauntlet.player1 = {
+  name: ''
+};
+
 /*
   Define the base object for any player of Gauntlet,
   whether a human player or a monster.
@@ -34,8 +38,7 @@ Gauntlet.Combatants.Player = function(name) {
       this.class,
       " with ",
       this.health,
-      " health. ",
-      (this.class.magical) ? "Able to cast " : " Wielding a ",
+      " health. ", (this.class.magical) ? "Able to cast " : " Wielding a ",
       this.weapon.toString(),
       "!"
     ].join("");
@@ -78,7 +81,7 @@ Gauntlet.Combatants.Human = function(name) {
   this.intelligence = this.intelligence + 20;
 
   this.skinColors.push("brown", "red", "white", "disease");
-  randomSkin = Math.round(Math.random() * (this.skinColors.length-1));
+  randomSkin = Math.round(Math.random() * (this.skinColors.length - 1));
   this.skinColor = this.skinColors[randomSkin];
 
   this.allowedClasses = ["Warrior", "Berserker", "Valkyrie", "Monk", "Wizard", "Conjurer", "Sorcerer"];
@@ -93,7 +96,7 @@ Gauntlet.Combatants.Human.prototype = new Gauntlet.Combatants.Player();
 Gauntlet.Combatants.Monster = function(name) {
   this.playerName = name;
   this.health = this.health - 30;
-  this.intelligence = this.intelligence -20;
+  this.intelligence = this.intelligence - 20;
   this.strength = this.strength + 30;
 };
 
