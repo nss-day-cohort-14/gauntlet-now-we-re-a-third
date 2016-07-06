@@ -88,6 +88,6 @@ $(document).ready(function() {
 
   $(document).on('click', '.playerClass', Selectors.chooseWeapon);
 
-  // $(document).on('click')
+  $(document).on('click', '.playerAttack', Selectors.addAttacks);
 
 });

@@ -6,7 +6,7 @@ const Classes = require('./classes');
 
 var domBuild = {};
 
-domBuild.addClasses = function(classArray) {
+domBuild.addClassCards = function(classArray) {
   let classCardString = '';
   let colCounter = 0;
   for (let i = 0; i < classArray.length; i++) {
@@ -27,7 +27,7 @@ domBuild.addClasses = function(classArray) {
   $('#classCardInput').append(classCardString);
 };
 
-domBuild.addAttacks = function(attackArray) {
+domBuild.addAttackCards = function(attackArray) {
   let attackCardString = '';
   for (let i = 0; i < attackArray.length; i++) {
     attackCardString += `<div class="col-sm-4">

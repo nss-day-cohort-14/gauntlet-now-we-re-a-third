@@ -30,4 +30,6 @@ var WarAxe = function() {
 };
 WarAxe.prototype = new Weapon();
 
-module.exports = {Dagger, BroadSword, WarAxe};
+module.exports = {
+  Dagger, BroadSword, WarAxe, Weapon
+};
