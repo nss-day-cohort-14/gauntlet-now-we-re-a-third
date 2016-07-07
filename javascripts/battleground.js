@@ -1,5 +1,6 @@
 'use strict';
 
+const $ = require('jquery');
 const Selectors = require('./selectors');
 const Battleground = {};
 
@@ -68,5 +69,31 @@ Battleground.CalcDamage = function(attacker, critical, miss) {
   console.log("", damage);
   return damage;
 };
+
+Battleground.addHeroBattleCard = function() {
+  let heroCardString = '';
+    heroCardString += `
+    <div class="heroCard">
+      <div>${currentPlayer.name} the ${currentPlayer.class}</div>
+      <div>Str: ${currentPlayer.strength}</div> 
+      <div>Int: ${currentPlayer.intelligence}</div> 
+      <div>Dex: ${currentPlayer.dexterity}</div>                  
+      <div>Health: ${currentPlayer.health}</div>
+    </div>`;
+  $('.hero').append(heroCardString);
+}
+
+Battleground.addVillainBattleCard = function() {
+  let villainCardString = '';
+    villainCardString += `
+    <div class="villainCard">
+      <div>Kragnor the ${currentOpponent.class}</div>
+      <div>Str: ${currentOpponent.strength}</div> 
+      <div>Int: ${currentOpponent.intelligence}</div> 
+      <div>Dex: ${currentOpponent.dexterity}</div>                  
+      <div>Health: ${currentOpponent.health}</div>
+    </div>`;
+  $('.villain').append(villainCardString);
+}
 
 module.exports = Battleground;

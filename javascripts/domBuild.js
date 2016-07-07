@@ -1,10 +1,10 @@
 "use strict";
 
-var $ = require('jquery');
+let $ = require('jquery');
 const Gauntlet = require('./player');
 const Classes = require('./classes');
 
-var domBuild = {};
+let domBuild = {};
 
 domBuild.addClassCards = function(classArray) {
   let classCardString = '';
