@@ -80,6 +80,7 @@ Battleground.addHeroBattleCard = function() {
       <div>Dex: ${currentPlayer.dexterity}</div>                  
       <div>Health: ${currentPlayer.health}</div>
     </div>`;
+  $('.hero').empty();
   $('.hero').append(heroCardString);
 }
 
@@ -93,7 +94,15 @@ Battleground.addVillainBattleCard = function() {
       <div>Dex: ${currentOpponent.dexterity}</div>                  
       <div>Health: ${currentOpponent.health}</div>
     </div>`;
+  $('.villain').empty();
   $('.villain').append(villainCardString);
+}
+
+Battleground.addBattleStringCard = function() {
+  let battleString = '';
+    battleString += `
+    <div class="battleCard">
+    </div>`;
 }
 
 module.exports = Battleground;

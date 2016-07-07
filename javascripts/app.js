@@ -75,5 +75,8 @@ $(document).ready(function() {
   $('.restart').on('click', Reset);
   //listens for click event on attack button to run battleground logic
   $('.attackBtn').on('click', Battleground.PassObjects);
+  $('.attackBtn').on('click', Battleground.addHeroBattleCard);
+  $('.attackBtn').on('click', Battleground.addVillainBattleCard);
+  $('.attackBtn').on('click', Battleground.addBattleStringCard);
 
 });
