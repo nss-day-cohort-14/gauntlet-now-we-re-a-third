@@ -42,7 +42,29 @@ Selectors.addAttacks = function() {
   } else if (magical === true) {
     Gauntlet.player1.setSpell(new Spells.SpellBook[selectedAttack]());
   }
-  console.log("", Gauntlet.player1);
+};
+
+Selectors.buildPlayerObject = function() {
+
+  let magical = Gauntlet.player1.class.magical;
+
+  let currentPlayer = {
+    name: Gauntlet.player1.playerName,
+    health: Gauntlet.player1.health + Gauntlet.player1.class.healthBonus,
+    strength: Gauntlet.player1.strength + Gauntlet.player1.class.strengthBonus,
+    intelligence: Gauntlet.player1.intelligence,
+    species: Gauntlet.player1.species,
+    class: Gauntlet.player1.class.name
+  };
+  if (magical === false) {
+    currentPlayer.weapon = Gauntlet.player1.weapon.name;
+    currentPlayer.damage = Gauntlet.player1.weapon.damage;
+  } else if (magical === true) {
+    currentPlayer.spell = Gauntlet.player1.spell.name;
+    currentPlayer.spellType = Gauntlet.player1.spell.type;
+    currentPlayer.damage = Gauntlet.player1.spell.damage;
+  }
+  console.log("", currentPlayer);
 };
 
 module.exports = Selectors;

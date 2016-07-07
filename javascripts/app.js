@@ -45,8 +45,6 @@ $(document).ready(function() {
    */
   $(".card__back").click(function(e) {
     var previousCard = $(this).attr("previous");
-    console.log("previousCard(card to show)", previousCard);
-    console.log("this", this);
     $(".card").hide();
     $("." + previousCard).show();
   });
@@ -62,5 +60,7 @@ $(document).ready(function() {
   $(document).on('click', '.playerClass', Selectors.chooseWeapon);
 
   $(document).on('click', '.playerAttack', Selectors.addAttacks);
+
+  $('.defeatEnemies').on('click', Selectors.buildPlayerObject);
 
 });
