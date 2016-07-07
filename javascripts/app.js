@@ -5,7 +5,6 @@ const Classes = require('./classes');
 const Weapons = require('./weapons');
 const Spells = require('./spells');
 const Selectors = require('./selectors.js');
-const buildDom = require('./domBuild.js');
 var $ = require('jquery');
 
 $(document).ready(function() {
@@ -48,22 +47,23 @@ $(document).ready(function() {
    */
   $(".card__back").click(function(e) {
     var previousCard = $(this).attr("previous");
-    console.log("previousCard(card to show)", previousCard);
-    console.log("this", this);
     $(".card").hide();
     $("." + previousCard).show();
   });
 
+  //grabs player name from input box
   $('.race-btn').on('click', function() {
     Gauntlet.player1.name = $('#player-name').val();
   });
-
+  //listens for click event on either race card to run chooseRace function
   $('.race').on('click', Selectors.chooseRace);
-
+  //listens for click event on any class card to run chooseClass function
   $(document).on('click', '.playerClass', Selectors.chooseClass);
-
+  //listens for click event on any class card to run chooseWeapon function
   $(document).on('click', '.playerClass', Selectors.chooseWeapon);
-
+  //listens for click event on any attack card to run addAttacks function
   $(document).on('click', '.playerAttack', Selectors.addAttacks);
+  //listens for click event on defeat enemies button to run buildPlayerObject function
+  $('.defeatEnemies').on('click', Selectors.buildPlayerObject);
 
 });
