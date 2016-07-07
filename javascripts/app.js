@@ -67,9 +67,10 @@ $(document).ready(function() {
   $(document).on('click', '.playerAttack', Selectors.addAttacks);
   //listens for click event on defeat enemies button to run buildPlayerObject function
   $('.defeatEnemies').on('click', Selectors.buildPlayerObject);
+  $('.defeatEnemies').on('click', Battleground.Initiate);
   //listens for click event on restart button to run reset function
   $('.restart').on('click', Reset);
   //listens for click event on attack button to run battleground logic
-  $('.attackBtn').on('click', Battleground);
+  $('.attackBtn').on('click', Battleground.PassObjects);
 
 });

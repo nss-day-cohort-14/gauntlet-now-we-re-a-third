@@ -76,7 +76,8 @@ Selectors.buildPlayerObject = function() {
     //sets species property
     species: Gauntlet.player1.species,
     //sets class name property
-    class: Gauntlet.player1.class.name
+    class: Gauntlet.player1.class.name,
+    classMaster: Gauntlet.player1.class.classMaster
   };
   if (playerMagical === false) {
     //sets weapon name property
@@ -91,7 +92,6 @@ Selectors.buildPlayerObject = function() {
     //sets spell damage property
     Selectors.currentPlayer.damage = Gauntlet.player1.spell.damage;
   }
-  console.log("", Selectors.currentPlayer);
 
   //instantiate new orc as opponent
   let opponent = new Gauntlet.Combatants.Orc();
@@ -99,6 +99,7 @@ Selectors.buildPlayerObject = function() {
   opponent.generateClass();
 
   let opponentMagical = opponent.class.magical;
+
   //build more usable object for opponent to enter battle arena
   Selectors.currentOpponent = {
     name: 'Opponent',
@@ -106,7 +107,8 @@ Selectors.buildPlayerObject = function() {
     strength: opponent.strength + opponent.class.strengthBonus,
     intelligence: opponent.intelligence,
     species: opponent.species,
-    class: opponent.class.name
+    class: opponent.class.name,
+    classMaster: opponent.class.classMaster
   };
   if (opponentMagical === false) {
     opponent.setWeapon(new Weapons.BroadSword());
@@ -118,7 +120,6 @@ Selectors.buildPlayerObject = function() {
     Selectors.currentOpponent.spellType = opponent.spell.type;
     Selectors.currentOpponent.damage = opponent.spell.damage;
   }
-  console.log("", Selectors.currentOpponent);
 };
 
 module.exports = Selectors;
