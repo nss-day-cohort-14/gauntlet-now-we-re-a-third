@@ -24,6 +24,7 @@ domBuild.addClassCards = function(classArray) {
       classCardString += `</div>`;
     }
   }
+  $('#classCardInput').empty();
   $('#classCardInput').append(classCardString);
 };
 
@@ -39,6 +40,7 @@ domBuild.addAttackCards = function(attackArray) {
       </div>
     </div>`;
   }
+  $('#attackCardInput').empty();
   $('#attackCardInput').append(attackCardString);
 };
 
