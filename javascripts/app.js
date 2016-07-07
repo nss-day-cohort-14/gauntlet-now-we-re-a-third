@@ -5,7 +5,6 @@ const Classes = require('./classes');
 const Weapons = require('./weapons');
 const Spells = require('./spells');
 const Selectors = require('./selectors.js');
-// const buildDom = require('./domBuild.js');
 var $ = require('jquery');
 
 $(document).ready(function() {
