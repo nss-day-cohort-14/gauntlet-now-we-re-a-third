@@ -9,6 +9,8 @@ const Spells = require('./spells');
 
 var Selectors = {};
 
+Selectors.currentPlayer = {};
+Selectors.currentOpponent = {};
 
 Selectors.chooseRace = function() {
   //pulls text from inside clicked button
@@ -62,7 +64,7 @@ Selectors.buildPlayerObject = function() {
   //checks if player has chosen a magical class or not
   let playerMagical = Gauntlet.player1.class.magical;
   //build more usable object for player to enter battle arena
-  let currentPlayer = {
+  Selectors.currentPlayer = {
     //sets name property 
     name: Gauntlet.player1.playerName,
     //adds base health with health bonus to set health property
@@ -78,18 +80,18 @@ Selectors.buildPlayerObject = function() {
   };
   if (playerMagical === false) {
     //sets weapon name property
-    currentPlayer.weapon = Gauntlet.player1.weapon.name;
+    Selectors.currentPlayer.weapon = Gauntlet.player1.weapon.name;
     //sets weapon damage property
-    currentPlayer.damage = Gauntlet.player1.weapon.damage;
+    Selectors.currentPlayer.damage = Gauntlet.player1.weapon.damage;
   } else if (playerMagical === true) {
     //sets spell name property
-    currentPlayer.spell = Gauntlet.player1.spell.name;
+    Selectors.currentPlayer.spell = Gauntlet.player1.spell.name;
     //sets spell type property
-    currentPlayer.spellType = Gauntlet.player1.spell.type;
+    Selectors.currentPlayer.spellType = Gauntlet.player1.spell.type;
     //sets spell damage property
-    currentPlayer.damage = Gauntlet.player1.spell.damage;
+    Selectors.currentPlayer.damage = Gauntlet.player1.spell.damage;
   }
-  console.log("", currentPlayer);
+  console.log("", Selectors.currentPlayer);
 
   //instantiate new orc as opponent
   let opponent = new Gauntlet.Combatants.Orc();
@@ -98,25 +100,25 @@ Selectors.buildPlayerObject = function() {
 
   let opponentMagical = opponent.class.magical;
   //build more usable object for opponent to enter battle arena
-  let currentOpponent = {
+  Selectors.currentOpponent = {
     name: 'Opponent',
     health: opponent.health + opponent.class.healthBonus,
     strength: opponent.strength + opponent.class.strengthBonus,
     intelligence: opponent.intelligence,
     species: opponent.species,
     class: opponent.class.name
-  }
+  };
   if (opponentMagical === false) {
-    opponent.setWeapon(new Weapons['BroadSword']());
-    currentOpponent.weapon = opponent.weapon.name;
-    currentOpponent.damage = opponent.weapon.damage;
+    opponent.setWeapon(new Weapons.BroadSword());
+    Selectors.currentOpponent.weapon = opponent.weapon.name;
+    Selectors.currentOpponent.damage = opponent.weapon.damage;
   } else if (opponentMagical === true) {
-    opponent.setSpell(new Spells.SpellBook['Tome']())
-    currentOpponent.spell = opponent.spell.name;
-    currentOpponent.spellType = opponent.spell.type;
-    currentOpponent.damage = opponent.spell.damage;
+    opponent.setSpell(new Spells.SpellBook.Tome());
+    Selectors.currentOpponent.spell = opponent.spell.name;
+    Selectors.currentOpponent.spellType = opponent.spell.type;
+    Selectors.currentOpponent.damage = opponent.spell.damage;
   }
-  console.log("", currentOpponent);
+  console.log("", Selectors.currentOpponent);
 };
 
 module.exports = Selectors;
