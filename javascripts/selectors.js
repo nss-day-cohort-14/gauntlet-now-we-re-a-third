@@ -77,6 +77,8 @@ Selectors.buildPlayerObject = function() {
     species: Gauntlet.player1.species,
     //sets class name property
     class: Gauntlet.player1.class.name,
+    //adds base dexterity with dexterity bonus to set dexterity property
+    dexterity: Gauntlet.player1.dexterity + Gauntlet.player1.class.dexterityBonus,
     classMaster: Gauntlet.player1.class.classMaster
   };
   if (playerMagical === false) {
@@ -108,8 +110,10 @@ Selectors.buildPlayerObject = function() {
     intelligence: opponent.intelligence,
     species: opponent.species,
     class: opponent.class.name,
-    classMaster: opponent.class.classMaster
+    classMaster: opponent.class.classMaster,
+    dexterity: opponent.dexterity + opponent.class.dexterityBonus
   };
+  console.log("", Selectors.currentOpponent);
   if (opponentMagical === false) {
     opponent.setWeapon(new Weapons.BroadSword());
     Selectors.currentOpponent.weapon = opponent.weapon.name;

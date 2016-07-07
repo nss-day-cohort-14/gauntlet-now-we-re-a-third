@@ -56,6 +56,8 @@ Battleground.CalcDamage = function(attacker, critical, miss) {
     damage = (attacker.strength * 0.1) + attacker.damage;
   } else if (attacker.classMaster === 'Mage') {
     damage = (attacker.intelligence * 0.1) + attacker.damage;
+  } else if (attacker.classMaster === 'Stealth') {
+    damage = (attacker.dexterity * 0.1) + attacker.damage;
   }
   if (critical === true) {
     damage = damage * 1.5;
