@@ -34,6 +34,7 @@ Player.GuildHall.Fighter = function() {
   this.healthBonus = 20;
   this.strengthBonus = 10;
   this.weaponArray = ['Dagger', 'WarAxe', 'BroadSword'];
+  this.classMaster = 'Fighter';
 };
 Player.GuildHall.Fighter.prototype = new Player.GuildHall.PlayerClass();
 
@@ -84,6 +85,7 @@ Player.GuildHall.Mage = function() {
   this.strengthBonus = this.strengthBonus - 20;
   this.intelligenceBonus = this.intelligenceBonus + 20;
   this.spellArray = ['Sphere', 'Tome', 'Staff', 'Chicken'];
+  this.classMaster = 'Mage';
 };
 Player.GuildHall.Mage.prototype = new Player.GuildHall.PlayerClass();
 
