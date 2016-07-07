@@ -33,7 +33,7 @@ Player.GuildHall.PlayerClass = function() {
 Player.GuildHall.Fighter = function() {
   this.healthBonus = 20;
   this.strengthBonus = 10;
-  this.weaponArray = ['Dagger', 'War Axe', 'Broadsword'];
+  this.weaponArray = ['Dagger', 'WarAxe', 'BroadSword'];
 };
 Player.GuildHall.Fighter.prototype = new Player.GuildHall.PlayerClass();
 

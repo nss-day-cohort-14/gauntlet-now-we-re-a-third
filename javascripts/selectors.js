@@ -18,7 +18,6 @@ Selectors.chooseRace = function() {
     Gauntlet.player1 = new Gauntlet.Combatants.Orc(Gauntlet.player1.name);
     domBuild.addClassCards(Gauntlet.player1.allowedClasses);
   }
-  console.log("", Gauntlet.player1);
 };
 
 Selectors.chooseClass = function() {
@@ -41,22 +40,9 @@ Selectors.addAttacks = function() {
   if (magical === false) {
     Gauntlet.player1.setWeapon(new Weapons[selectedAttack]());
   } else if (magical === true) {
-    Gauntlet.player1.setSpell(new Spells[selectedAttack]());
+    Gauntlet.player1.setSpell(new Spells.SpellBook[selectedAttack]());
   }
   console.log("", Gauntlet.player1);
 };
 
 module.exports = Selectors;
-
-
-
-
-
-
-// console.log("Health", Gauntlet.player1.health);
-// console.log("Health Bonus", Gauntlet.player1.class.healthBonus);
-// console.log("Health Total", Gauntlet.player1.health + Gauntlet.player1.class.healthBonus);
-// console.log("Strength", Gauntlet.player1.strength);
-// console.log("Strength Bonus", Gauntlet.player1.class.strengthBonus);
-// console.log("Strength Total", Gauntlet.player1.strength + Gauntlet.player1.class.strengthBonus);
-// console.log("Magic", Gauntlet.player1.class.magical);

@@ -8,35 +8,6 @@ const Selectors = require('./selectors.js');
 const buildDom = require('./domBuild.js');
 var $ = require('jquery');
 
-// console.log("Gauntlet", Gauntlet);
-// console.log("Classes", Classes);
-// console.log("Weapons", Weapons);
-// console.log("Spells", Spells);
-// console.log("Selectors", Selectors);
-// console.log("Dom Build", buildDom);
-/*
-  Test code to generate a human player and an orc player
-*/
-// var warrior = new Gauntlet.Combatants.Human('John');
-// warrior.setWeapon(new Weapons.WarAxe());
-// warrior.generateClass(); // This will be used for "Surprise me" option
-// console.log(warrior.toString());
-
-// var orc = new Gauntlet.Combatants.Orc('Winston');
-// orc.class = new Classes.GuildHall.Shaman();
-// orc.setWeapon(new Spells.SpellBook.Sphere());
-// console.log(orc.toString());
-
-// console.log("orc", orc);
-// console.log("human", warrior);
-
-/*
-  Test code to generate a spell
- */
-// var spell = new Spells.SpellBook.Sphere();
-// console.log("Spell: ", spell.toString());
-
-
 $(document).ready(function() {
   /*
     Show the initial view that accepts player name
@@ -74,6 +45,8 @@ $(document).ready(function() {
    */
   $(".card__back").click(function(e) {
     var previousCard = $(this).attr("previous");
+    console.log("previousCard(card to show)", previousCard);
+    console.log("this", this);
     $(".card").hide();
     $("." + previousCard).show();
   });
