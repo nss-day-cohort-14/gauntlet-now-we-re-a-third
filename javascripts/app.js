@@ -49,18 +49,19 @@ $(document).ready(function() {
     $("." + previousCard).show();
   });
 
+  //grabs player name from input box
   $('.race-btn').on('click', function() {
     Gauntlet.player1.name = $('#player-name').val();
   });
-
+  //listens for click event on either race card to run chooseRace function
   $('.race').on('click', Selectors.chooseRace);
-
+  //listens for click event on any class card to run chooseClass function
   $(document).on('click', '.playerClass', Selectors.chooseClass);
-
+  //listens for click event on any class card to run chooseWeapon function
   $(document).on('click', '.playerClass', Selectors.chooseWeapon);
-
+  //listens for click event on any attack card to run addAttacks function
   $(document).on('click', '.playerAttack', Selectors.addAttacks);
-
+  //listens for click event on defeat enemies button to run buildPlayerObject function
   $('.defeatEnemies').on('click', Selectors.buildPlayerObject);
 
 });
