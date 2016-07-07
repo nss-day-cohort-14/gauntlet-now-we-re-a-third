@@ -99,23 +99,24 @@ Selectors.buildPlayerObject = function() {
   let opponentMagical = opponent.class.magical;
   //build more usable object for opponent to enter battle arena
   let currentOpponent = {
-      name: 'Opponent',
-      health: opponent.health + opponent.class.healthBonus,
-      strength: opponent.strength + opponent.class.strengthBonus,
-      intelligence: opponent.intelligence,
-      species: opponent.species,
-      class: opponent.class.name
-    }
-    // if (opponentMagical === false) {
-    //   currentPlayer.weapon = opponent.weapon.name;
-    //   currentPlayer.damage = opponent.weapon.damage;
-    // } else if (opponentMagical === true) {
-    //   currentPlayer.spell = opponent.spell.name;
-    //   currentPlayer.spellType = opponent.spell.type;
-    //   currentPlayer.damage = opponent.spell.damage;
-    // }
+    name: 'Opponent',
+    health: opponent.health + opponent.class.healthBonus,
+    strength: opponent.strength + opponent.class.strengthBonus,
+    intelligence: opponent.intelligence,
+    species: opponent.species,
+    class: opponent.class.name
+  }
+  if (opponentMagical === false) {
+    opponent.setWeapon(new Weapons['BroadSword']());
+    currentOpponent.weapon = opponent.weapon.name;
+    currentOpponent.damage = opponent.weapon.damage;
+  } else if (opponentMagical === true) {
+    opponent.setSpell(new Spells.SpellBook['Tome']())
+    currentOpponent.spell = opponent.spell.name;
+    currentOpponent.spellType = opponent.spell.type;
+    currentOpponent.damage = opponent.spell.damage;
+  }
   console.log("", currentOpponent);
-
 };
 
 module.exports = Selectors;
