@@ -63,6 +63,12 @@ body {
   background-color: #FF4136;
 }
 
+.btn--red {
+  border-color: #FF4136;
+  color: white;
+  background-color: green;
+}
+
 .btn--blue {
   border-color: #0074D9;
   color: white;
