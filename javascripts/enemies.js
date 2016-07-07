@@ -2,7 +2,7 @@
 
 // load our initial obj constructor so we can add prototypes
 const Player = require('./player');
-
+const Classes = require('./classes');
 
 Player.Combatants.Orc = function(name) {
   this.playerName = name;
@@ -18,7 +18,7 @@ Player.Combatants.Orc = function(name) {
     var randomClass = this.allowedClasses[random];
 
     // Composes the corresponding player class into the player object
-    this.class = new Player.GuildHall[randomClass]();
+    this.class = new Classes.GuildHall[randomClass]();
     return this.class;
   };
 };
