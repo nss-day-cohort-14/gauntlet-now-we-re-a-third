@@ -6,6 +6,7 @@ const Battleground = {};
 
 let currentPlayer = {};
 let currentOpponent = {};
+let battleString = '';
 
 Battleground.Initiate = function() {
   currentPlayer = Selectors.currentPlayer;
@@ -66,7 +67,7 @@ Battleground.CalcDamage = function(attacker, critical, miss) {
   if (miss === true) {
     damage = 0;
   }
-  console.log("", damage);
+  console.log("attacker", damage);
   return damage;
 };
 
@@ -99,10 +100,28 @@ Battleground.addVillainBattleCard = function() {
 }
 
 Battleground.addBattleStringCard = function() {
-  let battleString = '';
+    let fullPlayer = currentPlayer.health;
+    let fullOpponent = currentOpponent.health;
+    // Health bar animation
     battleString += `
-    <div class="battleCard">
-    </div>`;
+    <div class="battleCard">`;
+    if (currentPlayer.health > 0 && currentOpponent.health > 0) {
+      battleString += `${currentPlayer.name} wails the enemy for .  Kragnor strikes back for  .`
+      console.log("battleString", battleString);
+      // Delay attacks logic
+    } else { 
+      if (currentPlayer.health <= 0) {
+        battleString += `Kragnor the ${currentOpponent.class} has slain our hero!`;
+        // If health < 0 health = 0
+      } else {
+        battleString += `${currentPlayer.name} the ${currentPlayer.class} has vanquished that scum!`;
+        // If health < 0 health = 0        
+      }
+      // show restart/ hide attack
+    }
+    battleString += `</div>`;
+  $('.battle').append(battleString);
+  //
 }
 
 module.exports = Battleground;
