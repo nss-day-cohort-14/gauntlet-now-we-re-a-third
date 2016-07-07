@@ -5,6 +5,7 @@ const Classes = require('./classes');
 const Weapons = require('./weapons');
 const Spells = require('./spells');
 const Selectors = require('./selectors.js');
+const Reset = require('./reset');
 var $ = require('jquery');
 
 $(document).ready(function() {
@@ -65,5 +66,7 @@ $(document).ready(function() {
   $(document).on('click', '.playerAttack', Selectors.addAttacks);
   //listens for click event on defeat enemies button to run buildPlayerObject function
   $('.defeatEnemies').on('click', Selectors.buildPlayerObject);
+  //listens for click event on restart button
+  $('.restart').on('click', Reset);
 
 });
