@@ -32,7 +32,7 @@ Player.GuildHall.PlayerClass = function() {
       - Monk
  */
 Player.GuildHall.Fighter = function() {
-  this.magical = false;  
+  this.magical = false;
   this.healthBonus = 20;
   this.strengthBonus = 10;
   this.weaponArray = ['Dagger', 'WarAxe', 'BroadSword'];
@@ -46,7 +46,7 @@ Player.GuildHall.Warrior = function() {
   this.healthBonus = this.healthBonus + 25;
   this.strengthBonus = this.strengthBonus + 30;
   this.intelligenceBonus = this.intelligenceBonus - 10;
-  this.dexterityBonus = this.dexterityBonus + 5;  
+  this.dexterityBonus = this.dexterityBonus + 5;
 };
 Player.GuildHall.Warrior.prototype = new Player.GuildHall.Fighter();
 
@@ -56,7 +56,7 @@ Player.GuildHall.Valkyrie = function() {
   this.healthBonus = this.healthBonus + 20;
   this.strengthBonus = this.strengthBonus + 10;
   this.intelligenceBonus = this.intelligenceBonus + 0;
-  this.dexterityBonus = this.dexterityBonus + 8;  
+  this.dexterityBonus = this.dexterityBonus + 8;
 };
 Player.GuildHall.Valkyrie.prototype = new Player.GuildHall.Fighter();
 
@@ -76,7 +76,7 @@ Player.GuildHall.Monk = function() {
   this.healthBonus = this.healthBonus + 10;
   this.strengthBonus = this.strengthBonus + 40;
   this.intelligenceBonus = this.intelligenceBonus + 10;
-  this.dexterityBonus = this.dexterityBonus + 12;  
+  this.dexterityBonus = this.dexterityBonus + 12;
 };
 Player.GuildHall.Monk.prototype = new Player.GuildHall.Fighter();
 
@@ -104,7 +104,7 @@ Player.GuildHall.Shaman = function() {
   this.healthBonus = this.healthBonus + 5;
   this.strengthBonus = this.strengthBonus - 10;
   this.intelligenceBonus = this.intelligenceBonus + 20;
-  this.dexterityBonus = this.dexterityBonus - 10;  
+  this.dexterityBonus = this.dexterityBonus - 10;
 };
 Player.GuildHall.Shaman.prototype = new Player.GuildHall.Mage();
 
@@ -114,7 +114,7 @@ Player.GuildHall.Wizard = function() {
   this.healthBonus = this.healthBonus - 15;
   this.strengthBonus = this.strengthBonus - 25;
   this.intelligenceBonus = this.intelligenceBonus + 40;
-  this.dexterityBonus = this.dexterityBonus - 15;  
+  this.dexterityBonus = this.dexterityBonus - 15;
 };
 Player.GuildHall.Wizard.prototype = new Player.GuildHall.Mage();
 
@@ -123,7 +123,7 @@ Player.GuildHall.Conjurer = function() {
   this.name = "Conjurer";
   this.strengthBonus = this.strengthBonus - 10;
   this.intelligenceBonus = this.intelligenceBonus + 10;
-  this.dexterityBonus = this.dexterityBonus - 15;   
+  this.dexterityBonus = this.dexterityBonus - 15;
 };
 Player.GuildHall.Conjurer.prototype = new Player.GuildHall.Mage();
 
@@ -133,7 +133,7 @@ Player.GuildHall.Sorcerer = function() {
   this.healthBonus = this.healthBonus - 5;
   this.strengthBonus = this.strengthBonus - 20;
   this.intelligenceBonus = this.intelligenceBonus + 30;
-  this.dexterityBonus = this.dexterityBonus - 15; 
+  this.dexterityBonus = this.dexterityBonus - 15;
 };
 Player.GuildHall.Sorcerer.prototype = new Player.GuildHall.Mage();
 
@@ -150,7 +150,7 @@ Player.GuildHall.Stealth = function() {
   this.healthBonus = this.healthBonus + 10;
   this.dexterityBonus = this.dexterityBonus + 20;
   this.intelligenceBonus = this.intelligenceBonus + 5;
-  this.weaponArray = ['Dagger', 'WarAxe', 'BroadSword']; 
+  this.weaponArray = ['Dagger', 'WarAxe', 'BroadSword'];
   this.classMaster = 'Stealth';
 };
 Player.GuildHall.Stealth.prototype = new Player.GuildHall.PlayerClass();
@@ -161,9 +161,9 @@ Player.GuildHall.Rogue = function() {
   this.healthBonus = this.healthBonus + 5;
   this.strengthBonus = this.strengthBonus - 10;
   this.intelligenceBonus = this.intelligenceBonus + 10;
-  this.dexterityBonus = this.dexterityBonus + 20;   
+  this.dexterityBonus = this.dexterityBonus + 20;
 };
-Player.GuildHall.Rogue.prototype = new Player.GuildHall.Mage();
+Player.GuildHall.Rogue.prototype = new Player.GuildHall.Stealth();
 
 
 Player.GuildHall.Assassin = function() {
@@ -171,18 +171,18 @@ Player.GuildHall.Assassin = function() {
   this.healthBonus = this.healthBonus - 15;
   this.strengthBonus = this.strengthBonus - 15;
   this.intelligenceBonus = this.intelligenceBonus + 15;
-  this.dexterityBonus = this.dexterityBonus + 30;   
+  this.dexterityBonus = this.dexterityBonus + 30;
 };
-Player.GuildHall.Assassin.prototype = new Player.GuildHall.Mage();
+Player.GuildHall.Assassin.prototype = new Player.GuildHall.Stealth();
 
 
 Player.GuildHall.Ninja = function() {
   this.name = "Ninja";
   this.strengthBonus = this.strengthBonus - 10;
   this.intelligenceBonus = this.intelligenceBonus + 10;
-  this.dexterityBonus = this.dexterityBonus + 35; 
+  this.dexterityBonus = this.dexterityBonus + 35;
 };
-Player.GuildHall.Ninja.prototype = new Player.GuildHall.Mage();
+Player.GuildHall.Ninja.prototype = new Player.GuildHall.Stealth();
 
 
 Player.GuildHall.Mime = function() {
@@ -190,9 +190,9 @@ Player.GuildHall.Mime = function() {
   this.healthBonus = this.healthBonus - 5;
   this.strengthBonus = this.strengthBonus - 20;
   this.intelligenceBonus = this.intelligenceBonus + 20;
-  this.dexterityBonus = this.dexterityBonus + 35; 
+  this.dexterityBonus = this.dexterityBonus + 35;
 };
-Player.GuildHall.Mime.prototype = new Player.GuildHall.Mage();
+Player.GuildHall.Mime.prototype = new Player.GuildHall.Stealth();
 
 // export obj for browserify
 module.exports = Player;
