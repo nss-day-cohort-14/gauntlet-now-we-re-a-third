@@ -129,12 +129,47 @@
            href="#" 
            next="card--battleground">
           <span class="btn__prompt">></span>
-          <span class="btn__text">defeat your enemies</span>
+          <span class="btn__text">Defeat your enemies</span>
         </a>
       </div>
     </section>
 
-    <section id="battleground" class="card card--battleground"></section>
+    <section id="battleground" class="card card--battleground">
+      <div class="card__prompt">
+        <div>Fight!!!</div>
+        <div>
+          <a class="card__back btn btn--small" 
+             href="#"
+             previous="card--weapon">
+            <span class="btn__prompt">&lt;</span>
+            <span class="btn__text">Back</span>
+          </a>          
+        </div>
+      </div>
+
+      <div class="container-fluid">
+        <div class="row" id="attackCardInput">
+          
+        </div>
+      </div>
+
+      <div class="card__button">
+        <a class="card__link btn btn--big btn--red" 
+           href="#">
+          <span class="btn__prompt">></span>
+          <span class="btn__text">Attack</span>
+        </a>
+      </div>      
+      <!-- After attack is finished, hide attack and show restart btn -->
+      <div class="card__button">
+        <a class="card__link btn btn--big btn--orange" 
+           href="#" 
+           next="card--name">
+          <span class="btn__prompt">></span>
+          <span class="btn__text">Restart</span>
+        </a>
+      </div>
+    </section>
 
   </article>
 
