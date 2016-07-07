@@ -27,6 +27,7 @@ Gauntlet.Combatants.Player = function(name) {
   this.skinColors = [this.skinColor];
   this.strength = 90;
   this.intelligence = 90;
+  this.dexterity = 90;
 
   this.toString = function() {
     var output = [this.playerName,
@@ -84,7 +85,7 @@ Gauntlet.Combatants.Human = function(name) {
   randomSkin = Math.round(Math.random() * (this.skinColors.length - 1));
   this.skinColor = this.skinColors[randomSkin];
 
-  this.allowedClasses = ["Warrior", "Berserker", "Valkyrie", "Monk", "Wizard", "Conjurer", "Sorcerer"];
+  this.allowedClasses = ["Warrior", "Berserker", "Valkyrie", "Monk", "Wizard", "Conjurer", "Sorcerer", "Rogue", "Assassin", "Ninja", "Mime"];
 };
 Gauntlet.Combatants.Human.prototype = new Gauntlet.Combatants.Player();
 
