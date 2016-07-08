@@ -72,11 +72,11 @@ Battleground.addHeroBattleCard = function() {
   let heroCardString = '';
   heroCardString += `
     <div class="heroCard">
-      <div>${currentPlayer.name} the ${currentPlayer.class}</div>
-      <div>Str: ${currentPlayer.strength}</div>
-      <div>Int: ${currentPlayer.intelligence}</div>
-      <div>Dex: ${currentPlayer.dexterity}</div>
-      <div>Health: ${currentPlayer.health}</div>
+      <p>${currentPlayer.name} the ${currentPlayer.class}</p>
+      <p>Str: ${currentPlayer.strength}</p>
+      <p>Int: ${currentPlayer.intelligence}</p>
+      <p>Dex: ${currentPlayer.dexterity}</p>
+      <p>Health: ${currentPlayer.health}</p>
       <div class="progress">
         <div id="cpHealth" class="progress-bar" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width: ${currentPlayer.health}%;">Health
         </div>
@@ -90,11 +90,11 @@ Battleground.addVillainBattleCard = function() {
   let villainCardString = '';
   villainCardString += `
     <div class="villainCard">
-      <div>Kragnor the ${currentOpponent.class}</div>
-      <div>Str: ${currentOpponent.strength}</div>
-      <div>Int: ${currentOpponent.intelligence}</div>
-      <div>Dex: ${currentOpponent.dexterity}</div>
-      <div>Health: ${currentOpponent.health}</div>
+      <p>Kragnor the ${currentOpponent.class}</p>
+      <p>Str: ${currentOpponent.strength}</p>
+      <p>Int: ${currentOpponent.intelligence}</p>
+      <p>Dex: ${currentOpponent.dexterity}</p>
+      <p>Health: ${currentOpponent.health}</p>
       <div class="progress">
         <div id="coHealth" class="progress-bar" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width: ${currentOpponent.health}%;">Health
         </div>
@@ -120,7 +120,7 @@ Battleground.addBattleStringCard = function() {
     <div class="battleCard">`;
   if (currentPlayer.health > 0 && currentOpponent.health > 0) {
     battleString = `<div>${currentPlayer.name} wails the enemy with a ${currentPlayer.weapon || currentPlayer.spell} for ${playerDmg}.</div>
-    <div>Kragnor strikes back with his ${currentOpponent.weapon || currentOpponent.spell} for ${opponentDmg}.<div>
+    <div class="krag">Kragnor strikes back with his ${currentOpponent.weapon || currentOpponent.spell} for ${opponentDmg}.<div>
       </div>`;
     console.log("playerDmg", playerDmg);
     console.log("opponentDmg", opponentDmg);
