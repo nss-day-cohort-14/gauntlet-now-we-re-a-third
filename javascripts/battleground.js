@@ -11,7 +11,7 @@ let playerDmg;
 let opponentDmg;
 let startingPlayerHealth;
 let startingOpponentHealth;
-let roundCounter = 0;
+Battleground.roundCounter = 0;
 
 Battleground.Initiate = function() {
   currentPlayer = Selectors.currentPlayer;
@@ -76,7 +76,7 @@ Battleground.addHeroBattleCard = function() {
       <div>Str: ${currentPlayer.strength}</div>
       <div>Int: ${currentPlayer.intelligence}</div>
       <div>Dex: ${currentPlayer.dexterity}</div>`;
-  if (currentPlayer.health <= 0) {
+  if (currentPlayer.health <= 0 && currentOpponent.health !== 0) {
     heroCardString += `<div>Health: 0</div>`;
   } else {
     heroCardString += `<div>Health: ${currentPlayer.health}</div>`;
@@ -99,7 +99,7 @@ Battleground.addVillainBattleCard = function() {
       <div>Str: ${currentOpponent.strength}</div>
       <div>Int: ${currentOpponent.intelligence}</div>
       <div>Dex: ${currentOpponent.dexterity}</div>`;
-  if (currentOpponent.health <= 0) {
+  if (currentOpponent.health <= 0 && currentPlayer.health !== 0) {
     villainCardString += `<div>Health: 0</div>`;
   } else {
     villainCardString += `<div>Health: ${currentOpponent.health}</div>`;
@@ -125,22 +125,22 @@ Battleground.updateHealth = function(heroHealth, villainHealth) {
 };
 
 Battleground.addBattleStringCard = function() {
-  roundCounter++;
+  Battleground.roundCounter++;
   battleString += `
     <div class="battleCard">`;
   if (currentPlayer.health > 0 && currentOpponent.health > 0) {
-    battleString = `<h3>ROUND ${roundCounter}</h3><div>${currentPlayer.name} wails the enemy with a ${currentPlayer.weapon || currentPlayer.spell} for ${playerDmg}.</div>
+    battleString = `<h3>ROUND ${Battleground.roundCounter}</h3><div>${currentPlayer.name} wails the enemy with a ${currentPlayer.weapon || currentPlayer.spell} for ${playerDmg}.</div>
     <div>Kragnor strikes back with his ${currentOpponent.weapon || currentOpponent.spell} for ${opponentDmg}.<div>
       </div>`;
   } else {
     if (currentOpponent.health <= 0) {
       battleString = `
-      <h3>ROUND ${roundCounter}</h3>
+      <h3>ROUND ${Battleground.roundCounter}</h3>
       <div>${currentPlayer.name} the ${currentPlayer.class} has vanquished that scum!</div>
       <div>${currentPlayer.name} wails the enemy with a ${currentPlayer.weapon || currentPlayer.spell} for ${playerDmg}.</div>`;
     } else {
       battleString = `
-      <h3>ROUND ${roundCounter}</h3>
+      <h3>ROUND ${Battleground.roundCounter}</h3>
       <div>Kragnor the ${currentOpponent.class} has slain our hero!</div>
       <div>Kragnor strikes back with his ${currentOpponent.weapon || currentOpponent.spell} for ${opponentDmg}.<div>`;
     }

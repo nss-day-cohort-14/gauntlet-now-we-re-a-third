@@ -4,6 +4,7 @@ const Battleground = require('./battleground');
 var $ = require('jquery');
 
 var Reset = function() {
+  Battleground.roundCounter = 0;
   Selectors.currentPlayer = {};
   Selectors.currentOpponent = {};
   $('.battle').empty();
