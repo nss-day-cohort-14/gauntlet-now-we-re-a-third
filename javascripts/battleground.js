@@ -9,10 +9,14 @@ let currentOpponent = {};
 let battleString = '';
 let playerDmg;
 let opponentDmg;
+let startingPlayerHealth;
+let startingOpponentHealth;
 
 Battleground.Initiate = function() {
   currentPlayer = Selectors.currentPlayer;
   currentOpponent = Selectors.currentOpponent;
+  startingPlayerHealth = currentPlayer.health;
+  startingOpponentHealth = currentOpponent.health;
 };
 
 Battleground.PassObjects = function() {
@@ -98,6 +102,7 @@ Battleground.addHeroBattleCard = function() {
       <div>Str: ${currentPlayer.strength}</div>
       <div>Int: ${currentPlayer.intelligence}</div>
       <div>Dex: ${currentPlayer.dexterity}</div>
+      <div>Health: ${currentPlayer.health}</div>
       <div class="progress">
         <div id="cpHealth" class="progress-bar" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width: ${currentPlayer.health}%;">Health
         </div>
@@ -115,6 +120,7 @@ Battleground.addVillainBattleCard = function() {
       <div>Str: ${currentOpponent.strength}</div>
       <div>Int: ${currentOpponent.intelligence}</div>
       <div>Dex: ${currentOpponent.dexterity}</div>
+      <div>Health: ${currentOpponent.health}</div>
       <div class="progress">
         <div id="coHealth" class="progress-bar" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width: ${currentOpponent.health}%;">Health
         </div>
@@ -129,8 +135,10 @@ Battleground.addVillainBattleCard = function() {
 Battleground.updateHealth = function(heroHealth, villainHealth) {
   let $cpHealthBar = $('#cpHealth');
   let $coHealthBar = $('#coHealth');
-  $cpHealthBar.css("width", `${heroHealth}%`);
-  $coHealthBar.css("width", `${villainHealth}%`);
+  let heroHealthPercent = (heroHealth / startingPlayerHealth) * 100;
+  let villainHealthPercent = (villainHealth / startingOpponentHealth) * 100;
+  $cpHealthBar.css("width", `${heroHealthPercent}%`);
+  $coHealthBar.css("width", `${villainHealthPercent}%`);
 }
 
 Battleground.addBattleStringCard = function() {
@@ -150,15 +158,15 @@ Battleground.addBattleStringCard = function() {
     if (currentPlayer.health <= 0) {
       battleString = `
         <div>Kragnor the ${currentOpponent.class} has slain our hero!</div>`;
-        $(".attackBtn").addClass("disabled");
-        $("#attackButton").hide();
-        $("#restartButton").show();
+      $(".attackBtn").addClass("disabled");
+      $("#attackButton").hide();
+      $("#restartButton").show();
       // If health < 0 health = 0
     } else {
       battleString = `<div>${currentPlayer.name} the ${currentPlayer.class} has vanquished that scum!</div>`;
-        $(".attackBtn").addClass("disabled");
-        $("#attackButton").hide();
-        $("#restartButton").show();
+      $(".attackBtn").addClass("disabled");
+      $("#attackButton").hide();
+      $("#restartButton").show();
       // If health < 0 health = 0
     }
     // show restart/ hide attack
