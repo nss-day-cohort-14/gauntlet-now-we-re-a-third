@@ -113,7 +113,7 @@ Battleground.updateHealth = function(heroHealth, villainHealth) {
   let villainHealthPercent = (villainHealth / startingOpponentHealth) * 100;
   $cpHealthBar.css("width", `${heroHealthPercent}%`);
   $coHealthBar.css("width", `${villainHealthPercent}%`);
-}
+};
 
 Battleground.addBattleStringCard = function() {
   battleString += `
@@ -132,7 +132,6 @@ Battleground.addBattleStringCard = function() {
     } else {
       battleString = `
         <div>Kragnor the ${currentOpponent.class} has slain our hero!</div>`;
-      $(".attackBtn").addClass("disabled");
       $("#attackButton").hide();
       $("#restartButton").show();
     }
