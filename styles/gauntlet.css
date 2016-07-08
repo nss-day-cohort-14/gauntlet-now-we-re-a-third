@@ -50,11 +50,17 @@ body {
 }
 
 .card__player h3 {
-/*  margin-top: 0;*/
   text-align: center;
   background-color: red;
   color: white;
 }
+
+#rnd {
+  text-align: center;
+  background-color: #0074D9;
+  color: white;
+}
+
 
 .hero, .villain {
   padding: 0 20px;
@@ -69,10 +75,6 @@ body {
 .battle {
   padding: 0 20px;
   font-size: .75em;
-}
-
-.krag {
-  border-bottom: 1px dashed #0074D9;
 }
 
 
