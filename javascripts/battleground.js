@@ -95,13 +95,13 @@ Battleground.addHeroBattleCard = function() {
   heroCardString += `
     <div class="heroCard">
       <div>${currentPlayer.name} the ${currentPlayer.class}</div>
-      <div>Str: ${currentPlayer.strength}</div> 
-      <div>Int: ${currentPlayer.intelligence}</div> 
+      <div>Str: ${currentPlayer.strength}</div>
+      <div>Int: ${currentPlayer.intelligence}</div>
       <div>Dex: ${currentPlayer.dexterity}</div>
       <div class="progress">
         <div id="cpHealth" class="progress-bar" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width: ${currentPlayer.health}%;">Health
         </div>
-      </div>                  
+      </div>
     </div>`;
   $('.hero').empty();
   $('.hero').append(heroCardString);
@@ -112,16 +112,17 @@ Battleground.addVillainBattleCard = function() {
   villainCardString += `
     <div class="villainCard">
       <div>Kragnor the ${currentOpponent.class}</div>
-      <div>Str: ${currentOpponent.strength}</div> 
-      <div>Int: ${currentOpponent.intelligence}</div> 
-      <div>Dex: ${currentOpponent.dexterity}</div>                  
+      <div>Str: ${currentOpponent.strength}</div>
+      <div>Int: ${currentOpponent.intelligence}</div>
+      <div>Dex: ${currentOpponent.dexterity}</div>
       <div class="progress">
         <div id="coHealth" class="progress-bar" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width: ${currentOpponent.health}%;">Health
         </div>
-      </div>  
+      </div>
     </div>`;
   $('.villain').empty();
   $('.villain').append(villainCardString);
+  $("#restartButton").hide();
   Battleground.updateHealth(currentPlayer.health, currentOpponent.health);
 };
 
@@ -149,10 +150,16 @@ Battleground.addBattleStringCard = function() {
     if (currentPlayer.health <= 0) {
       battleString = `
         <div>Kragnor the ${currentOpponent.class} has slain our hero!</div>`;
+        $(".attackBtn").addClass("disabled");
+        $("#attackButton").hide();
+        $("#restartButton").show();
       // If health < 0 health = 0
     } else {
       battleString = `<div>${currentPlayer.name} the ${currentPlayer.class} has vanquished that scum!</div>`;
-      // If health < 0 health = 0        
+        $(".attackBtn").addClass("disabled");
+        $("#attackButton").hide();
+        $("#restartButton").show();
+      // If health < 0 health = 0
     }
     // show restart/ hide attack
   }
