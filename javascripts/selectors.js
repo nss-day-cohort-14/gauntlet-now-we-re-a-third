@@ -65,7 +65,7 @@ Selectors.buildPlayerObject = function() {
   let playerMagical = Gauntlet.player1.class.magical;
   //build more usable object for player to enter battle arena
   Selectors.currentPlayer = {
-    //sets name property 
+    //sets name property
     name: Gauntlet.player1.playerName,
     //adds base health with health bonus to set health property
     health: Gauntlet.player1.health + Gauntlet.player1.class.healthBonus,
@@ -116,7 +116,7 @@ Selectors.buildPlayerObject = function() {
   };
   console.log("villian", Selectors.currentOpponent);
   if (opponentMagical === false) {
-    opponent.setWeapon(new Weapons.BroadSword());
+    opponent.generateWeapon();
     Selectors.currentOpponent.weapon = opponent.weapon.name;
     Selectors.currentOpponent.damage = opponent.weapon.damage;
   } else if (opponentMagical === true) {

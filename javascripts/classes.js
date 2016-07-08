@@ -143,7 +143,7 @@ Player.GuildHall.Sorcerer.prototype = new Player.GuildHall.Mage();
       - Rogue
       - Assassin
       - Ninja
-      - Mime            
+      - Mime
  */
 Player.GuildHall.Stealth = function() {
   this.magical = false;
