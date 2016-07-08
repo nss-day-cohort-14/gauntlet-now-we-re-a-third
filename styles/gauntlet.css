@@ -43,6 +43,7 @@ body {
 
 .card__player {
   border: 1px dotted red;
+  text-align: center;
 }
 
 .card__player h3 {
