@@ -119,22 +119,20 @@ Battleground.addBattleStringCard = function() {
   battleString += `
     <div class="battleCard">`;
   if (currentPlayer.health > 0 && currentOpponent.health > 0) {
-    battleString = `${currentPlayer.name} wails the enemy with a ${currentPlayer.weapon || currentPlayer.spell} for ${playerDmg}. \nKragnor strikes back with his ${currentOpponent.weapon || currentOpponent.spell} for ${opponentDmg}.
+    battleString = `<div>${currentPlayer.name} wails the enemy with a ${currentPlayer.weapon || currentPlayer.spell} for ${playerDmg}.</div> 
+    <div>Kragnor strikes back with his ${currentOpponent.weapon || currentOpponent.spell} for ${opponentDmg}.<div>
       </div>`;
     console.log("playerDmg", playerDmg);
     console.log("opponentDmg", opponentDmg);
   } else {
     if (currentOpponent.health <= 0) {
       battleString = `<div>${currentPlayer.name} the ${currentPlayer.class} has vanquished that scum!</div>`;
-      $(".attackBtn").addClass("disabled");
-      $("#attackButton").hide();
-      $("#restartButton").show();
     } else {
       battleString = `
         <div>Kragnor the ${currentOpponent.class} has slain our hero!</div>`;
-      $("#attackButton").hide();
-      $("#restartButton").show();
     }
+    $("#attackButton").hide();
+    $("#restartButton").show();
   }
   $('.battle').append(battleString);
   //
