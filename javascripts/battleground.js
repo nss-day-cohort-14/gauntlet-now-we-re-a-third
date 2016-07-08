@@ -76,7 +76,7 @@ Battleground.addHeroBattleCard = function() {
       <div>Str: ${currentPlayer.strength}</div>
       <div>Int: ${currentPlayer.intelligence}</div>
       <div>Dex: ${currentPlayer.dexterity}</div>`;
-  if (currentPlayer.health <= 0) {
+  if (currentPlayer.health <= 0 && currentOpponent.health !== 0) {
     heroCardString += `<div>Health: 0</div>`;
   } else {
     heroCardString += `<div>Health: ${currentPlayer.health}</div>`;
@@ -99,7 +99,7 @@ Battleground.addVillainBattleCard = function() {
       <div>Str: ${currentOpponent.strength}</div>
       <div>Int: ${currentOpponent.intelligence}</div>
       <div>Dex: ${currentOpponent.dexterity}</div>`;
-  if (currentOpponent.health <= 0) {
+  if (currentOpponent.health <= 0 && currentPlayer.health !== 0) {
     villainCardString += `<div>Health: 0</div>`;
   } else {
     villainCardString += `<div>Health: ${currentOpponent.health}</div>`;
