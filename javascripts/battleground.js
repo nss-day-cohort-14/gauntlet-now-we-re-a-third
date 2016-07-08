@@ -72,14 +72,14 @@ Battleground.addHeroBattleCard = function() {
   let heroCardString = '';
   heroCardString += `
     <div class="heroCard">
-      <div>${currentPlayer.name} the ${currentPlayer.class}</div>
-      <div>Str: ${currentPlayer.strength}</div>
-      <div>Int: ${currentPlayer.intelligence}</div>
-      <div>Dex: ${currentPlayer.dexterity}</div>`;
+      <p>${currentPlayer.name} the ${currentPlayer.class}</p>
+      <p>Str: ${currentPlayer.strength}</p>
+      <p>Int: ${currentPlayer.intelligence}</p>
+      <p>Dex: ${currentPlayer.dexterity}</p>`;
   if (currentPlayer.health <= 0 && currentOpponent.health !== 0) {
-    heroCardString += `<div>Health: 0</div>`;
+    heroCardString += `<p>Health: 0</p>`;
   } else {
-    heroCardString += `<div>Health: ${currentPlayer.health}</div>`;
+    heroCardString += `<p>Health: ${currentPlayer.health}</p>`;
   }
   heroCardString += `
       <div class="progress">
@@ -95,14 +95,14 @@ Battleground.addVillainBattleCard = function() {
   let villainCardString = '';
   villainCardString += `
     <div class="villainCard">
-      <div>Kragnor the ${currentOpponent.class}</div>
-      <div>Str: ${currentOpponent.strength}</div>
-      <div>Int: ${currentOpponent.intelligence}</div>
-      <div>Dex: ${currentOpponent.dexterity}</div>`;
+      <p>Kragnor the ${currentOpponent.class}</p>
+      <p>Str: ${currentOpponent.strength}</p>
+      <p>Int: ${currentOpponent.intelligence}</p>
+      <p>Dex: ${currentOpponent.dexterity}</p>`;
   if (currentOpponent.health <= 0 && currentPlayer.health !== 0) {
-    villainCardString += `<div>Health: 0</div>`;
+    villainCardString += `<p>Health: 0</p>`;
   } else {
-    villainCardString += `<div>Health: ${currentOpponent.health}</div>`;
+    villainCardString += `<p>Health: ${currentOpponent.health}</p>`;
   }
   villainCardString += `<div class="progress">
         <div id="coHealth" class="progress-bar" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width: ${currentOpponent.health}%;">Health
@@ -129,18 +129,18 @@ Battleground.addBattleStringCard = function() {
   battleString += `
     <div class="battleCard">`;
   if (currentPlayer.health > 0 && currentOpponent.health > 0) {
-    battleString = `<h3>ROUND ${Battleground.roundCounter}</h3><div>${currentPlayer.name} wails the enemy with a ${currentPlayer.weapon || currentPlayer.spell} for ${playerDmg}.</div>
-    <div>Kragnor strikes back with his ${currentOpponent.weapon || currentOpponent.spell} for ${opponentDmg}.<div>
+    battleString = `<h4 id="rnd">ROUND ${Battleground.roundCounter}</h4><div>${currentPlayer.name} wails the enemy with a ${currentPlayer.weapon || currentPlayer.spell} for ${playerDmg}.</div>
+      <div>Kragnor strikes back with his ${currentOpponent.weapon || currentOpponent.spell} for ${opponentDmg}.<div>
       </div>`;
   } else {
     if (currentOpponent.health <= 0) {
       battleString = `
-      <h3>ROUND ${Battleground.roundCounter}</h3>
+      <h4 id="rnd">ROUND ${Battleground.roundCounter}</h4>
       <div>${currentPlayer.name} the ${currentPlayer.class} has vanquished that scum!</div>
       <div>${currentPlayer.name} wails the enemy with a ${currentPlayer.weapon || currentPlayer.spell} for ${playerDmg}.</div>`;
     } else {
       battleString = `
-      <h3>ROUND ${Battleground.roundCounter}</h3>
+      <h4 id="rnd">ROUND ${Battleground.roundCounter}</h4>
       <div>Kragnor the ${currentOpponent.class} has slain our hero!</div>
       <div>Kragnor strikes back with his ${currentOpponent.weapon || currentOpponent.spell} for ${opponentDmg}.<div>`;
     }

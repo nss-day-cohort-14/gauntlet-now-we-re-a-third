@@ -42,7 +42,7 @@ body {
 }
 
 .card__player {
-  height: 320px;
+  height: 330px;
   border: 2px solid red;
   border-radius: 4px;
   text-align: center;
@@ -51,6 +51,30 @@ body {
 
 .card__player h3 {
   text-align: center;
+  background-color: red;
+  color: white;
+}
+
+#rnd {
+  text-align: center;
+  background-color: #0074D9;
+  color: white;
+}
+
+
+.hero, .villain {
+  padding: 0 20px;
+  font-size: .75em;
+}
+
+.hero p, .villain p {
+  padding-top: 2px;
+  padding-bottom: 2px;
+}
+
+.battle {
+  padding: 0 20px;
+  font-size: .75em;
 }
 
 
