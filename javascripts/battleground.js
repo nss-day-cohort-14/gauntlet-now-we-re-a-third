@@ -24,41 +24,15 @@ Battleground.PassObjects = function() {
 };
 
 Battleground.PlayerAttack = function(attacker, victim) {
-  // let critical = Battleground.CritChance();
-  // let miss = Battleground.MissChance();
   playerDmg = Battleground.CalcDamage(attacker);
   victim.health = victim.health - playerDmg;
   Battleground.OpponentAttack(currentOpponent, currentPlayer);
 };
 
 Battleground.OpponentAttack = function(attacker, victim) {
-  // let critical = Battleground.CritChance();
-  // let miss = Battleground.MissChance();
   opponentDmg = Battleground.CalcDamage(attacker);
   victim.health = victim.health - opponentDmg;
 };
-
-// Battleground.CritChance = function() {
-//   let critical = null;
-//   let random = Math.round(Math.random() * 100);
-//   if (random > 80) {
-//     critical = true;
-//   } else if (random <= 80) {
-//     critical = false;
-//   }
-//   return critical;
-// };
-
-// Battleground.MissChance = function() {
-//   let miss = null;
-//   let random = Math.round(Math.random() * 100);
-//   if (random > 85) {
-//     miss = true;
-//   } else if (random <= 85) {
-//     miss = false;
-//   }
-//   return miss;
-// };
 
 Battleground.CalcDamage = function(attacker) {
   let damage = 0;
@@ -142,33 +116,25 @@ Battleground.updateHealth = function(heroHealth, villainHealth) {
 };
 
 Battleground.addBattleStringCard = function() {
-  // let playerDmg = Battleground.CalcDamage(currentPlayer);
-  // let opponentDmg = Battleground.CalcDamage(currentOpponent);
-  // Health bar animation
   battleString += `
     <div class="battleCard">`;
   if (currentPlayer.health > 0 && currentOpponent.health > 0) {
     battleString = `${currentPlayer.name} wails the enemy with a ${currentPlayer.weapon || currentPlayer.spell} for ${playerDmg}. \nKragnor strikes back with his ${currentOpponent.weapon || currentOpponent.spell} for ${opponentDmg}.
       </div>`;
-    //console.log("battleString", battleString);
     console.log("playerDmg", playerDmg);
     console.log("opponentDmg", opponentDmg);
-    // Delay attacks logic
   } else {
-    if (currentPlayer.health <= 0) {
-      battleString = `
-        <div>Kragnor the ${currentOpponent.class} has slain our hero!</div>`;
+    if (currentOpponent.health <= 0) {
+      battleString = `<div>${currentPlayer.name} the ${currentPlayer.class} has vanquished that scum!</div>`;
       $(".attackBtn").addClass("disabled");
       $("#attackButton").hide();
       $("#restartButton").show();
-      // If health < 0 health = 0
     } else {
-      battleString = `<div>${currentPlayer.name} the ${currentPlayer.class} has vanquished that scum!</div>`;
+      battleString = `
+        <div>Kragnor the ${currentOpponent.class} has slain our hero!</div>`;
       $("#attackButton").hide();
       $("#restartButton").show();
-      // If health < 0 health = 0
     }
-    // show restart/ hide attack
   }
   $('.battle').append(battleString);
   //
