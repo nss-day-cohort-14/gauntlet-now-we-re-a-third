@@ -42,8 +42,11 @@ body {
 }
 
 .card__player {
-  border: 1px dotted red;
+  height: 320px;
+  border: 2px solid red;
+  border-radius: 4px;
   text-align: center;
+  overflow-y: auto;
 }
 
 .card__player h3 {
