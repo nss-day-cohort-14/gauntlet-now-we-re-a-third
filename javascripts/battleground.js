@@ -139,7 +139,7 @@ Battleground.updateHealth = function(heroHealth, villainHealth) {
   let villainHealthPercent = (villainHealth / startingOpponentHealth) * 100;
   $cpHealthBar.css("width", `${heroHealthPercent}%`);
   $coHealthBar.css("width", `${villainHealthPercent}%`);
-}
+};
 
 Battleground.addBattleStringCard = function() {
   // let playerDmg = Battleground.CalcDamage(currentPlayer);
@@ -164,7 +164,6 @@ Battleground.addBattleStringCard = function() {
       // If health < 0 health = 0
     } else {
       battleString = `<div>${currentPlayer.name} the ${currentPlayer.class} has vanquished that scum!</div>`;
-      $(".attackBtn").addClass("disabled");
       $("#attackButton").hide();
       $("#restartButton").show();
       // If health < 0 health = 0

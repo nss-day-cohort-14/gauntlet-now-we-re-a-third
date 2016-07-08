@@ -90,7 +90,7 @@ Player.GuildHall.Monk.prototype = new Player.GuildHall.Fighter();
  */
 Player.GuildHall.Mage = function() {
   this.magical = true;
-  this.healthBonus = this.healthBonus - 10;
+  this.healthBonus = this.healthBonus + 10;
   this.strengthBonus = this.strengthBonus - 20;
   this.intelligenceBonus = this.intelligenceBonus + 20;
   this.spellArray = ['Sphere', 'Tome', 'Staff', 'Chicken'];
@@ -101,7 +101,7 @@ Player.GuildHall.Mage.prototype = new Player.GuildHall.PlayerClass();
 
 Player.GuildHall.Shaman = function() {
   this.name = "Shaman";
-  this.healthBonus = this.healthBonus + 5;
+  this.healthBonus = this.healthBonus + 15;
   this.strengthBonus = this.strengthBonus - 10;
   this.intelligenceBonus = this.intelligenceBonus + 20;
   this.dexterityBonus = this.dexterityBonus - 10;
@@ -111,7 +111,7 @@ Player.GuildHall.Shaman.prototype = new Player.GuildHall.Mage();
 
 Player.GuildHall.Wizard = function() {
   this.name = "Wizard";
-  this.healthBonus = this.healthBonus - 15;
+  this.healthBonus = this.healthBonus + 10;
   this.strengthBonus = this.strengthBonus - 25;
   this.intelligenceBonus = this.intelligenceBonus + 40;
   this.dexterityBonus = this.dexterityBonus - 15;
@@ -121,6 +121,7 @@ Player.GuildHall.Wizard.prototype = new Player.GuildHall.Mage();
 
 Player.GuildHall.Conjurer = function() {
   this.name = "Conjurer";
+  this.healthBonus = this.healthBonus + 15;
   this.strengthBonus = this.strengthBonus - 10;
   this.intelligenceBonus = this.intelligenceBonus + 10;
   this.dexterityBonus = this.dexterityBonus - 15;
@@ -130,7 +131,7 @@ Player.GuildHall.Conjurer.prototype = new Player.GuildHall.Mage();
 
 Player.GuildHall.Sorcerer = function() {
   this.name = "Sorcerer";
-  this.healthBonus = this.healthBonus - 5;
+  this.healthBonus = this.healthBonus + 5;
   this.strengthBonus = this.strengthBonus - 20;
   this.intelligenceBonus = this.intelligenceBonus + 30;
   this.dexterityBonus = this.dexterityBonus - 15;
