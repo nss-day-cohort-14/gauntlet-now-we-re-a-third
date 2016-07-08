@@ -11,6 +11,7 @@ let playerDmg;
 let opponentDmg;
 let startingPlayerHealth;
 let startingOpponentHealth;
+Battleground.roundCounter = 0;
 
 Battleground.Initiate = function() {
   currentPlayer = Selectors.currentPlayer;
@@ -64,7 +65,6 @@ Battleground.CalcDamage = function(attacker) {
       damage = 0;
     }
   }
-  console.log("attacker", damage);
   return damage;
 };
 
@@ -75,8 +75,13 @@ Battleground.addHeroBattleCard = function() {
       <p>${currentPlayer.name} the ${currentPlayer.class}</p>
       <p>Str: ${currentPlayer.strength}</p>
       <p>Int: ${currentPlayer.intelligence}</p>
-      <p>Dex: ${currentPlayer.dexterity}</p>
-      <p>Health: ${currentPlayer.health}</p>
+      <p>Dex: ${currentPlayer.dexterity}</p>`;
+  if (currentPlayer.health <= 0 && currentOpponent.health !== 0) {
+    heroCardString += `<p>Health: 0</p>`;
+  } else {
+    heroCardString += `<p>Health: ${currentPlayer.health}</p>`;
+  }
+  heroCardString += `
       <div class="progress">
         <div id="cpHealth" class="progress-bar" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width: ${currentPlayer.health}%;">Health
         </div>
@@ -93,9 +98,13 @@ Battleground.addVillainBattleCard = function() {
       <p>Kragnor the ${currentOpponent.class}</p>
       <p>Str: ${currentOpponent.strength}</p>
       <p>Int: ${currentOpponent.intelligence}</p>
-      <p>Dex: ${currentOpponent.dexterity}</p>
-      <p>Health: ${currentOpponent.health}</p>
-      <div class="progress">
+      <p>Dex: ${currentOpponent.dexterity}</p>`;
+  if (currentOpponent.health <= 0 && currentPlayer.health !== 0) {
+    villainCardString += `<p>Health: 0</p>`;
+  } else {
+    villainCardString += `<p>Health: ${currentOpponent.health}</p>`;
+  }
+  villainCardString += `<div class="progress">
         <div id="coHealth" class="progress-bar" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width: ${currentOpponent.health}%;">Health
         </div>
       </div>
@@ -116,20 +125,24 @@ Battleground.updateHealth = function(heroHealth, villainHealth) {
 };
 
 Battleground.addBattleStringCard = function() {
+  Battleground.roundCounter++;
   battleString += `
     <div class="battleCard">`;
   if (currentPlayer.health > 0 && currentOpponent.health > 0) {
-    battleString = `<div>${currentPlayer.name} wails the enemy with a ${currentPlayer.weapon || currentPlayer.spell} for ${playerDmg}.</div>
-    <div class="krag">Kragnor strikes back with his ${currentOpponent.weapon || currentOpponent.spell} for ${opponentDmg}.<div>
+    battleString = `<h3>ROUND ${Battleground.roundCounter}</h3><div>${currentPlayer.name} wails the enemy with a ${currentPlayer.weapon || currentPlayer.spell} for ${playerDmg}.</div>
+      <div>Kragnor strikes back with his ${currentOpponent.weapon || currentOpponent.spell} for ${opponentDmg}.<div>
       </div>`;
-    console.log("playerDmg", playerDmg);
-    console.log("opponentDmg", opponentDmg);
   } else {
     if (currentOpponent.health <= 0) {
-      battleString = `<div>${currentPlayer.name} the ${currentPlayer.class} has vanquished that scum!</div>`;
+      battleString = `
+      <h3>ROUND ${Battleground.roundCounter}</h3>
+      <div>${currentPlayer.name} the ${currentPlayer.class} has vanquished that scum!</div>
+      <div>${currentPlayer.name} wails the enemy with a ${currentPlayer.weapon || currentPlayer.spell} for ${playerDmg}.</div>`;
     } else {
       battleString = `
-        <div>Kragnor the ${currentOpponent.class} has slain our hero!</div>`;
+      <h3>ROUND ${Battleground.roundCounter}</h3>
+      <div>Kragnor the ${currentOpponent.class} has slain our hero!</div>
+      <div>Kragnor strikes back with his ${currentOpponent.weapon || currentOpponent.spell} for ${opponentDmg}.<div>`;
     }
     $("#attackButton").hide();
     $("#restartButton").show();
