@@ -1,6 +1,6 @@
 "use strict";
 
-let $ = require('jquery');
+var $ = require('jquery');
 const Gauntlet = require('./player');
 const Classes = require('./classes');
 

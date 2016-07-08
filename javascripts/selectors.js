@@ -81,6 +81,7 @@ Selectors.buildPlayerObject = function() {
     dexterity: Gauntlet.player1.dexterity + Gauntlet.player1.class.dexterityBonus,
     classMaster: Gauntlet.player1.class.classMaster
   };
+  console.log("hero", Selectors.currentPlayer);
   if (playerMagical === false) {
     //sets weapon name property
     Selectors.currentPlayer.weapon = Gauntlet.player1.weapon.name;
@@ -113,7 +114,7 @@ Selectors.buildPlayerObject = function() {
     classMaster: opponent.class.classMaster,
     dexterity: opponent.dexterity + opponent.class.dexterityBonus
   };
-  console.log("", Selectors.currentOpponent);
+  console.log("villian", Selectors.currentOpponent);
   if (opponentMagical === false) {
     opponent.setWeapon(new Weapons.BroadSword());
     Selectors.currentOpponent.weapon = opponent.weapon.name;
