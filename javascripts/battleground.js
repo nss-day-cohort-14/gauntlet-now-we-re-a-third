@@ -122,6 +122,7 @@ Battleground.addVillainBattleCard = function() {
     </div>`;
   $('.villain').empty();
   $('.villain').append(villainCardString);
+
   Battleground.updateHealth(currentPlayer.health, currentOpponent.health);
 };
 
@@ -155,6 +156,9 @@ Battleground.addBattleStringCard = function() {
       // If health < 0 health = 0
     } else {
       battleString = `<div>${currentPlayer.name} the ${currentPlayer.class} has vanquished that scum!</div>`;
+        $(".attackBtn").addClass("disabled");
+        $("#attackButton").hide();
+        $("#restartButton").show();
       // If health < 0 health = 0
     }
     // show restart/ hide attack
