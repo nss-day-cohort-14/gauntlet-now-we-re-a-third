@@ -64,7 +64,7 @@ Battleground.CalcDamage = function(attacker) {
       damage = 0;
     }
   }
-  console.log("attacker", damage);
+  // console.log("attacker", damage);
   return damage;
 };
 
@@ -75,8 +75,13 @@ Battleground.addHeroBattleCard = function() {
       <div>${currentPlayer.name} the ${currentPlayer.class}</div>
       <div>Str: ${currentPlayer.strength}</div>
       <div>Int: ${currentPlayer.intelligence}</div>
-      <div>Dex: ${currentPlayer.dexterity}</div>
-      <div>Health: ${currentPlayer.health}</div>
+      <div>Dex: ${currentPlayer.dexterity}</div>`;
+  if (currentPlayer.health <= 0) {
+    heroCardString += `<div>Health: 0</div>`;
+  } else {
+    heroCardString += `<div>Health: ${currentPlayer.health}</div>`;
+  }
+  heroCardString += `
       <div class="progress">
         <div id="cpHealth" class="progress-bar" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width: ${currentPlayer.health}%;">Health
         </div>
@@ -93,9 +98,13 @@ Battleground.addVillainBattleCard = function() {
       <div>Kragnor the ${currentOpponent.class}</div>
       <div>Str: ${currentOpponent.strength}</div>
       <div>Int: ${currentOpponent.intelligence}</div>
-      <div>Dex: ${currentOpponent.dexterity}</div>
-      <div>Health: ${currentOpponent.health}</div>
-      <div class="progress">
+      <div>Dex: ${currentOpponent.dexterity}</div>`;
+  if (currentOpponent.health <= 0) {
+    villainCardString += `<div>Health: 0</div>`;
+  } else {
+    villainCardString += `<div>Health: ${currentOpponent.health}</div>`;
+  }
+  villainCardString += `<div class="progress">
         <div id="coHealth" class="progress-bar" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width: ${currentOpponent.health}%;">Health
         </div>
       </div>
@@ -119,11 +128,12 @@ Battleground.addBattleStringCard = function() {
   battleString += `
     <div class="battleCard">`;
   if (currentPlayer.health > 0 && currentOpponent.health > 0) {
+    console.log("test", currentPlayer.health, currentOpponent.health);
     battleString = `<div>${currentPlayer.name} wails the enemy with a ${currentPlayer.weapon || currentPlayer.spell} for ${playerDmg}.</div>
     <div>Kragnor strikes back with his ${currentOpponent.weapon || currentOpponent.spell} for ${opponentDmg}.<div>
       </div>`;
-    console.log("playerDmg", playerDmg);
-    console.log("opponentDmg", opponentDmg);
+    // console.log("playerDmg", playerDmg);
+    // console.log("opponentDmg", opponentDmg);
   } else {
     if (currentOpponent.health <= 0) {
       battleString = `<div>${currentPlayer.name} the ${currentPlayer.class} has vanquished that scum!</div>`;
