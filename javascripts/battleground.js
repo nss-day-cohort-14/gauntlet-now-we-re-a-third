@@ -130,7 +130,7 @@ Battleground.addBattleStringCard = function() {
     <div class="battleCard">`;
   if (currentPlayer.health > 0 && currentOpponent.health > 0) {
     battleString = `<h3>ROUND ${Battleground.roundCounter}</h3><div>${currentPlayer.name} wails the enemy with a ${currentPlayer.weapon || currentPlayer.spell} for ${playerDmg}.</div>
-      <div>Kragnor strikes back with his ${currentOpponent.weapon || currentOpponent.spell} for ${opponentDmg}.<div>
+      <div class="krag">Kragnor strikes back with his ${currentOpponent.weapon || currentOpponent.spell} for ${opponentDmg}.<div>
       </div>`;
   } else {
     if (currentOpponent.health <= 0) {
@@ -142,7 +142,7 @@ Battleground.addBattleStringCard = function() {
       battleString = `
       <h3>ROUND ${Battleground.roundCounter}</h3>
       <div>Kragnor the ${currentOpponent.class} has slain our hero!</div>
-      <div>Kragnor strikes back with his ${currentOpponent.weapon || currentOpponent.spell} for ${opponentDmg}.<div>`;
+      <div class="krag">Kragnor strikes back with his ${currentOpponent.weapon || currentOpponent.spell} for ${opponentDmg}.<div>`;
     }
     $("#attackButton").hide();
     $("#restartButton").show();
