@@ -1,6 +1,6 @@
 'use strict';
 
-const $ = require('jquery');
+var $ = require('jquery');
 const Selectors = require('./selectors');
 const Battleground = {};
 
@@ -52,20 +52,25 @@ Battleground.MissChance = function() {
   return miss;
 };
 
-Battleground.CalcDamage = function(attacker, critical, miss) {
+Battleground.CalcDamage = function(attacker) {
   let damage = 0;
+  let critChance = Math.floor((Math.random() * 100) + 1);
+
   if (attacker.classMaster === 'Fighter') {
     damage = (attacker.strength * 0.1) + attacker.damage;
+    if (critChance >= 81) {
+      damage = damage * 1.5;
+    }
   } else if (attacker.classMaster === 'Mage') {
     damage = (attacker.intelligence * 0.1) + attacker.damage;
+    if (critChance >= 81) {
+      damage = damage * 1.5;
+    }
   } else if (attacker.classMaster === 'Stealth') {
     damage = (attacker.dexterity * 0.1) + attacker.damage;
-  }
-  if (critical === true) {
-    damage = damage * 1.5;
-  }
-  if (miss === true) {
-    damage = 0;
+    if (critChance >= 81) {
+      damage = damage * 1.5;
+    }
   }
   console.log("attacker", damage);
   return damage;
@@ -83,7 +88,7 @@ Battleground.addHeroBattleCard = function() {
     </div>`;
   $('.hero').empty();
   $('.hero').append(heroCardString);
-}
+};
 
 Battleground.addVillainBattleCard = function() {
   let villainCardString = '';
@@ -97,17 +102,17 @@ Battleground.addVillainBattleCard = function() {
     </div>`;
   $('.villain').empty();
   $('.villain').append(villainCardString);
-}
+};
 
 Battleground.addBattleStringCard = function() {
-    let fullPlayer = currentPlayer.health;
-    let fullOpponent = currentOpponent.health;
+    let playerDmg = Battleground.CalcDamage(currentPlayer);
+    let opponentDmg = Battleground.CalcDamage(currentOpponent);
     // Health bar animation
     battleString += `
     <div class="battleCard">`;
     if (currentPlayer.health > 0 && currentOpponent.health > 0) {
-      battleString += `${currentPlayer.name} wails the enemy for .  Kragnor strikes back for  .`
-      console.log("battleString", battleString);
+      battleString += `${currentPlayer.name} wails the enemy with a ${currentPlayer.weapon || currentPlayer.spell} for ${playerDmg}.  Kragnor strikes back with his ${currentOpponent.weapon || currentOpponent.spell} for ${opponentDmg}.`;
+      //console.log("battleString", battleString);
       // Delay attacks logic
     } else { 
       if (currentPlayer.health <= 0) {
@@ -122,6 +127,6 @@ Battleground.addBattleStringCard = function() {
     battleString += `</div>`;
   $('.battle').append(battleString);
   //
-}
+};
 
 module.exports = Battleground;
