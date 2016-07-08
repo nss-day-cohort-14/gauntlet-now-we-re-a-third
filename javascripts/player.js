@@ -55,23 +55,23 @@ Gauntlet.Combatants.Player.prototype.setSpell = function(newSpell) {
   this.spell = newSpell;
 };
 
-Gauntlet.Combatants.Player.prototype.generateClass = function() {
-  // Get a random index from the allowed classes array
-  var random = Math.round(Math.random() * (this.allowedClasses.length - 1));
+// Gauntlet.Combatants.Player.prototype.generateClass = function() {
+//   // Get a random index from the allowed classes array
+//   var random = Math.round(Math.random() * (this.allowedClasses.length - 1));
 
-  // Get the string at the index
-  var randomClass = this.allowedClasses[random];
+//   // Get the string at the index
+//   var randomClass = this.allowedClasses[random];
 
-  // Composes the corresponding player class into the player object
-  this.class = new Classes.GuildHall[randomClass]();
+//   // Composes the corresponding player class into the player object
+//   this.class = new Classes.GuildHall[randomClass]();
 
-  // Add the health bonus
-  this.health += this.class.healthBonus;
-  return this.class;
-};
+//   // Add the health bonus
+//   this.health += this.class.healthBonus;
+//   return this.class;
+// };
 
 /*
-  Define the base properties for a human in a 
+  Define the base properties for a human in a
   constructor function.
  */
 Gauntlet.Combatants.Human = function(name) {
@@ -91,7 +91,7 @@ Gauntlet.Combatants.Human.prototype = new Gauntlet.Combatants.Player();
 
 
 /*
-  Define the base properties for a monster in a 
+  Define the base properties for a monster in a
   constructor function.
  */
 Gauntlet.Combatants.Monster = function(name) {
