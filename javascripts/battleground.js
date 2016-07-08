@@ -18,39 +18,39 @@ Battleground.PassObjects = function() {
 };
 
 Battleground.PlayerAttack = function(attacker, victim) {
-  let critical = Battleground.CritChance();
-  let miss = Battleground.MissChance();
-  victim.health = victim.health - Battleground.CalcDamage(attacker, critical, miss);
+  // let critical = Battleground.CritChance();
+  // let miss = Battleground.MissChance();
+  victim.health = victim.health - Battleground.CalcDamage(attacker);
   Battleground.OpponentAttack(currentOpponent, currentPlayer);
 };
 
 Battleground.OpponentAttack = function(attacker, victim) {
-  let critical = Battleground.CritChance();
-  let miss = Battleground.MissChance();
-  victim.health = victim.health - Battleground.CalcDamage(attacker, critical, miss);
+  // let critical = Battleground.CritChance();
+  // let miss = Battleground.MissChance();
+  victim.health = victim.health - Battleground.CalcDamage(attacker);
 };
 
-Battleground.CritChance = function() {
-  let critical = null;
-  let random = Math.round(Math.random() * 100);
-  if (random > 80) {
-    critical = true;
-  } else if (random <= 80) {
-    critical = false;
-  }
-  return critical;
-};
+// Battleground.CritChance = function() {
+//   let critical = null;
+//   let random = Math.round(Math.random() * 100);
+//   if (random > 80) {
+//     critical = true;
+//   } else if (random <= 80) {
+//     critical = false;
+//   }
+//   return critical;
+// };
 
-Battleground.MissChance = function() {
-  let miss = null;
-  let random = Math.round(Math.random() * 100);
-  if (random > 85) {
-    miss = true;
-  } else if (random <= 85) {
-    miss = false;
-  }
-  return miss;
-};
+// Battleground.MissChance = function() {
+//   let miss = null;
+//   let random = Math.round(Math.random() * 100);
+//   if (random > 85) {
+//     miss = true;
+//   } else if (random <= 85) {
+//     miss = false;
+//   }
+//   return miss;
+// };
 
 Battleground.CalcDamage = function(attacker) {
   let damage = 0;
@@ -111,20 +111,23 @@ Battleground.addBattleStringCard = function() {
     battleString += `
     <div class="battleCard">`;
     if (currentPlayer.health > 0 && currentOpponent.health > 0) {
-      battleString += `${currentPlayer.name} wails the enemy with a ${currentPlayer.weapon || currentPlayer.spell} for ${playerDmg}.  Kragnor strikes back with his ${currentOpponent.weapon || currentOpponent.spell} for ${opponentDmg}.`;
+      battleString = `${currentPlayer.name} wails the enemy with a ${currentPlayer.weapon || currentPlayer.spell} for ${playerDmg}.  Kragnor strikes back with his ${currentOpponent.weapon || currentOpponent.spell} for ${opponentDmg}.
+      </div>`;
       //console.log("battleString", battleString);
+      console.log("playerDmg", playerDmg);
+      console.log("opponentDmg", opponentDmg);
       // Delay attacks logic
     } else { 
       if (currentPlayer.health <= 0) {
-        battleString += `Kragnor the ${currentOpponent.class} has slain our hero!`;
+        battleString = `
+        <div>Kragnor the ${currentOpponent.class} has slain our hero!</div>`;
         // If health < 0 health = 0
       } else {
-        battleString += `${currentPlayer.name} the ${currentPlayer.class} has vanquished that scum!`;
+        battleString = `<div>${currentPlayer.name} the ${currentPlayer.class} has vanquished that scum!</div>`;
         // If health < 0 health = 0        
       }
       // show restart/ hide attack
     }
-    battleString += `</div>`;
   $('.battle').append(battleString);
   //
 };
