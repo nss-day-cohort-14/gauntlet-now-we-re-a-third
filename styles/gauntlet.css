@@ -53,6 +53,10 @@ body {
   text-align: center;
 }
 
+.hero, .villain {
+  padding: 0 20px;
+}
+
 
 /*
   Button styles
