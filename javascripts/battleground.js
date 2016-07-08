@@ -11,6 +11,7 @@ let playerDmg;
 let opponentDmg;
 let startingPlayerHealth;
 let startingOpponentHealth;
+let roundCounter = 0;
 
 Battleground.Initiate = function() {
   currentPlayer = Selectors.currentPlayer;
@@ -64,7 +65,6 @@ Battleground.CalcDamage = function(attacker) {
       damage = 0;
     }
   }
-  // console.log("attacker", damage);
   return damage;
 };
 
@@ -125,23 +125,24 @@ Battleground.updateHealth = function(heroHealth, villainHealth) {
 };
 
 Battleground.addBattleStringCard = function() {
+  roundCounter++;
   battleString += `
     <div class="battleCard">`;
   if (currentPlayer.health > 0 && currentOpponent.health > 0) {
-    battleString = `<div>${currentPlayer.name} wails the enemy with a ${currentPlayer.weapon || currentPlayer.spell} for ${playerDmg}.</div>
+    battleString = `<h3>ROUND ${roundCounter}</h3><div>${currentPlayer.name} wails the enemy with a ${currentPlayer.weapon || currentPlayer.spell} for ${playerDmg}.</div>
     <div>Kragnor strikes back with his ${currentOpponent.weapon || currentOpponent.spell} for ${opponentDmg}.<div>
       </div>`;
-    // console.log("playerDmg", playerDmg);
-    // console.log("opponentDmg", opponentDmg);
   } else {
     if (currentOpponent.health <= 0) {
       battleString = `
+      <h3>ROUND ${roundCounter}</h3>
       <div>${currentPlayer.name} the ${currentPlayer.class} has vanquished that scum!</div>
       <div>${currentPlayer.name} wails the enemy with a ${currentPlayer.weapon || currentPlayer.spell} for ${playerDmg}.</div>`;
     } else {
       battleString = `
-        <div>Kragnor the ${currentOpponent.class} has slain our hero!</div>
-        <div>Kragnor strikes back with his ${currentOpponent.weapon || currentOpponent.spell} for ${opponentDmg}.<div>`;
+      <h3>ROUND ${roundCounter}</h3>
+      <div>Kragnor the ${currentOpponent.class} has slain our hero!</div>
+      <div>Kragnor strikes back with his ${currentOpponent.weapon || currentOpponent.spell} for ${opponentDmg}.<div>`;
     }
     $("#attackButton").hide();
     $("#restartButton").show();
