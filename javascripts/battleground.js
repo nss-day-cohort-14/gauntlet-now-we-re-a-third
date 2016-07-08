@@ -7,6 +7,8 @@ const Battleground = {};
 let currentPlayer = {};
 let currentOpponent = {};
 let battleString = '';
+let playerDmg;
+let opponentDmg;
 
 Battleground.Initiate = function() {
   currentPlayer = Selectors.currentPlayer;
@@ -20,14 +22,16 @@ Battleground.PassObjects = function() {
 Battleground.PlayerAttack = function(attacker, victim) {
   // let critical = Battleground.CritChance();
   // let miss = Battleground.MissChance();
-  victim.health = victim.health - Battleground.CalcDamage(attacker);
+  playerDmg = Battleground.CalcDamage(attacker);
+  victim.health = victim.health - playerDmg;
   Battleground.OpponentAttack(currentOpponent, currentPlayer);
 };
 
 Battleground.OpponentAttack = function(attacker, victim) {
   // let critical = Battleground.CritChance();
   // let miss = Battleground.MissChance();
-  victim.health = victim.health - Battleground.CalcDamage(attacker);
+  opponentDmg = Battleground.CalcDamage(attacker);
+  victim.health = victim.health - opponentDmg;
 };
 
 // Battleground.CritChance = function() {
@@ -83,8 +87,11 @@ Battleground.addHeroBattleCard = function() {
       <div>${currentPlayer.name} the ${currentPlayer.class}</div>
       <div>Str: ${currentPlayer.strength}</div> 
       <div>Int: ${currentPlayer.intelligence}</div> 
-      <div>Dex: ${currentPlayer.dexterity}</div>                  
-      <div>Health: ${currentPlayer.health}</div>
+      <div>Dex: ${currentPlayer.dexterity}</div>
+      <div class="progress">
+        <div id="cpHealth" class="progress-bar" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width: ${currentPlayer.health}%;">Health
+        </div>
+      </div>                  
     </div>`;
   $('.hero').empty();
   $('.hero').append(heroCardString);
@@ -98,20 +105,31 @@ Battleground.addVillainBattleCard = function() {
       <div>Str: ${currentOpponent.strength}</div> 
       <div>Int: ${currentOpponent.intelligence}</div> 
       <div>Dex: ${currentOpponent.dexterity}</div>                  
-      <div>Health: ${currentOpponent.health}</div>
+      <div class="progress">
+        <div id="coHealth" class="progress-bar" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width: ${currentOpponent.health}%;">Health
+        </div>
+      </div>  
     </div>`;
   $('.villain').empty();
   $('.villain').append(villainCardString);
+  Battleground.updateHealth(currentPlayer.health, currentOpponent.health);
 };
 
+Battleground.updateHealth = function(heroHealth, villainHealth) {
+  let $cpHealthBar = $('#cpHealth');
+  let $coHealthBar = $('#coHealth');
+  $cpHealthBar.css("width", `${heroHealth}%`);
+  $coHealthBar.css("width", `${villainHealth}%`);
+}
+
 Battleground.addBattleStringCard = function() {
-    let playerDmg = Battleground.CalcDamage(currentPlayer);
-    let opponentDmg = Battleground.CalcDamage(currentOpponent);
+    // let playerDmg = Battleground.CalcDamage(currentPlayer);
+    // let opponentDmg = Battleground.CalcDamage(currentOpponent);
     // Health bar animation
     battleString += `
     <div class="battleCard">`;
     if (currentPlayer.health > 0 && currentOpponent.health > 0) {
-      battleString = `${currentPlayer.name} wails the enemy with a ${currentPlayer.weapon || currentPlayer.spell} for ${playerDmg}.  Kragnor strikes back with his ${currentOpponent.weapon || currentOpponent.spell} for ${opponentDmg}.
+      battleString = `${currentPlayer.name} wails the enemy with a ${currentPlayer.weapon || currentPlayer.spell} for ${playerDmg}. \nKragnor strikes back with his ${currentOpponent.weapon || currentOpponent.spell} for ${opponentDmg}.
       </div>`;
       //console.log("battleString", battleString);
       console.log("playerDmg", playerDmg);
