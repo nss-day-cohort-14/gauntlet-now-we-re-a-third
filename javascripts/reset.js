@@ -8,7 +8,7 @@ var Reset = function() {
   Selectors.currentOpponent = {};
   $('.battle').empty();
   $("#attackButton").show();
-  console.log("", $('#player-name').val());
+  $('#player-name').val('');
 };
 
 module.exports = Reset;
