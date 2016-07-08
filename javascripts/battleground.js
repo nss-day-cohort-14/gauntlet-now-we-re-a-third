@@ -122,7 +122,8 @@ Battleground.addVillainBattleCard = function() {
     </div>`;
   $('.villain').empty();
   $('.villain').append(villainCardString);
-
+  // $('.restart').addClass('enabled');
+  $("#restartButton").hide();
   Battleground.updateHealth(currentPlayer.health, currentOpponent.health);
 };
 
