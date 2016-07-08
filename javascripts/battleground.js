@@ -59,21 +59,31 @@ Battleground.OpponentAttack = function(attacker, victim) {
 Battleground.CalcDamage = function(attacker) {
   let damage = 0;
   let critChance = Math.floor((Math.random() * 100) + 1);
+  let missChance = Math.floor((Math.random() * 100) + 1);
 
   if (attacker.classMaster === 'Fighter') {
     damage = (attacker.strength * 0.1) + attacker.damage;
     if (critChance >= 81) {
       damage = damage * 1.5;
     }
+    if (missChance >= 86) {
+      damage = 0;
+    }
   } else if (attacker.classMaster === 'Mage') {
     damage = (attacker.intelligence * 0.1) + attacker.damage;
     if (critChance >= 81) {
       damage = damage * 1.5;
     }
+    if (missChance >= 86) {
+      damage = 0;
+    }
   } else if (attacker.classMaster === 'Stealth') {
     damage = (attacker.dexterity * 0.1) + attacker.damage;
     if (critChance >= 81) {
       damage = damage * 1.5;
+    }
+    if (missChance >= 86) {
+      damage = 0;
     }
   }
   console.log("attacker", damage);
@@ -82,7 +92,7 @@ Battleground.CalcDamage = function(attacker) {
 
 Battleground.addHeroBattleCard = function() {
   let heroCardString = '';
-    heroCardString += `
+  heroCardString += `
     <div class="heroCard">
       <div>${currentPlayer.name} the ${currentPlayer.class}</div>
       <div>Str: ${currentPlayer.strength}</div> 
@@ -99,7 +109,7 @@ Battleground.addHeroBattleCard = function() {
 
 Battleground.addVillainBattleCard = function() {
   let villainCardString = '';
-    villainCardString += `
+  villainCardString += `
     <div class="villainCard">
       <div>Kragnor the ${currentOpponent.class}</div>
       <div>Str: ${currentOpponent.strength}</div> 
@@ -123,29 +133,29 @@ Battleground.updateHealth = function(heroHealth, villainHealth) {
 }
 
 Battleground.addBattleStringCard = function() {
-    // let playerDmg = Battleground.CalcDamage(currentPlayer);
-    // let opponentDmg = Battleground.CalcDamage(currentOpponent);
-    // Health bar animation
-    battleString += `
+  // let playerDmg = Battleground.CalcDamage(currentPlayer);
+  // let opponentDmg = Battleground.CalcDamage(currentOpponent);
+  // Health bar animation
+  battleString += `
     <div class="battleCard">`;
-    if (currentPlayer.health > 0 && currentOpponent.health > 0) {
-      battleString = `${currentPlayer.name} wails the enemy with a ${currentPlayer.weapon || currentPlayer.spell} for ${playerDmg}. \nKragnor strikes back with his ${currentOpponent.weapon || currentOpponent.spell} for ${opponentDmg}.
+  if (currentPlayer.health > 0 && currentOpponent.health > 0) {
+    battleString = `${currentPlayer.name} wails the enemy with a ${currentPlayer.weapon || currentPlayer.spell} for ${playerDmg}. \nKragnor strikes back with his ${currentOpponent.weapon || currentOpponent.spell} for ${opponentDmg}.
       </div>`;
-      //console.log("battleString", battleString);
-      console.log("playerDmg", playerDmg);
-      console.log("opponentDmg", opponentDmg);
-      // Delay attacks logic
-    } else { 
-      if (currentPlayer.health <= 0) {
-        battleString = `
+    //console.log("battleString", battleString);
+    console.log("playerDmg", playerDmg);
+    console.log("opponentDmg", opponentDmg);
+    // Delay attacks logic
+  } else {
+    if (currentPlayer.health <= 0) {
+      battleString = `
         <div>Kragnor the ${currentOpponent.class} has slain our hero!</div>`;
-        // If health < 0 health = 0
-      } else {
-        battleString = `<div>${currentPlayer.name} the ${currentPlayer.class} has vanquished that scum!</div>`;
-        // If health < 0 health = 0        
-      }
-      // show restart/ hide attack
+      // If health < 0 health = 0
+    } else {
+      battleString = `<div>${currentPlayer.name} the ${currentPlayer.class} has vanquished that scum!</div>`;
+      // If health < 0 health = 0        
     }
+    // show restart/ hide attack
+  }
   $('.battle').append(battleString);
   //
 };
